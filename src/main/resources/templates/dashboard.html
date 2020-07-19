@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th = "http://www.thymeleaf.org">
+
+    <head>
+
+        <div class="jumbotron">
+
+            <div th:insert="~{fragments :: header}"></div>
+
+            <title th:text="#{title.dashboard}"></title>
+
+        </div>
+    </head>
+
+    <body>
+
+        <div th:insert="~{fragments :: menu}"></div>
+
+        <h4 th:text="#{dashboard.text}"></h4>
+
+        <div th:insert="~{fragments :: copy}"></div>
+
+    </body>
+
+</html>
