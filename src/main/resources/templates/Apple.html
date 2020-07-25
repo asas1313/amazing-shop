@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+
+    <div th:insert="~{fragments :: header}"></div>
+
+    <title th:text="#{title.index}"></title>
+
+</head>
+
+<body>
+<div class="jumbotron">
+
+    <div th:insert="~{fragments :: menu}"></div>
+
+        <div th:insert="~{fragments :: copy}"></div>
+
+    <div th:insert="~{fragments :: scripts}"></div>
+
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="/img/iphone.png" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">AIPONAS 10</h5>
+            <p class="card-text">Visi mygtukai veikia</p>
+            <button type="button" class="btn btn-outline-info">1200 EUR</button>
+            <br>
+            <button type="button" class="btn btn-info">Add to cart</button>
+            <button type="button" class="btn btn-info">Buy now!</button>
+        </div>
+        </div>
+
+
+
+
+</body>
+</html>
