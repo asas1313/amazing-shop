@@ -9,7 +9,7 @@ body {
     font-size: 87%;
 }
 .container {
-    max-width: 940px; 
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto; 
     background-color: #FFF;
@@ -48,7 +48,6 @@ header p {
     text-decoration: none;
     padding: 10px 20px;
     border: 3px solid #d1eaf0;
-    border-bottom: none;
 }   
 .site-nav a:hover{
     background-color: #d1eaf0;
@@ -83,4 +82,3 @@ footer {
 .group {
     zoom:1;
 }
-    
