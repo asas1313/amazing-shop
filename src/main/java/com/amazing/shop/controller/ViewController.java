@@ -1,5 +1,8 @@
 package com.amazing.shop.controller;
 
+import com.amazing.shop.entity.Category;
+import com.amazing.shop.repository.CategoryRepository;
+import com.amazing.shop.service.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.amazing.shop.entity.Customer;
@@ -20,6 +23,9 @@ public class ViewController {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @GetMapping("/")
     public String root() {
@@ -48,6 +54,12 @@ public class ViewController {
         List<Customer> users = new CustomerServiceImpl(customerRepository, passwordEncoder).findAll();
         model.addAttribute("users", users);
         return "registration-list";
+    }
+    @GetMapping("/categories-list")
+    public String categories(Model model) {
+        List<Category> categories = new CategoryService(categoryRepository).findAll();
+        model.addAttribute("categories", categories);
+        return "categories-list";
     }
 
 }

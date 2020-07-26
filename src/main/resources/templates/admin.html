@@ -28,6 +28,9 @@
                     <a class="nav-link" id="admin-registration-tab" data-toggle="pill" href="#admin-registration"
                        role="tab" aria-controls="admin-registration" aria-selected="false"
                        th:text="#{menu.registration}"></a>
+                    <a class="nav-link" id="admin-categories-tab" data-toggle="pill" href="#admin-categories"
+                       role="tab" aria-controls="admin-categories" aria-selected="false"
+                       th:text="#{menu.categories}"></a>
                     <a class="nav-link" id="admin-settings-tab" data-toggle="pill" href="#admin-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
                 </div>
             </div>
@@ -41,6 +44,9 @@
                     </div>
                     <div class="tab-pane fade" id="admin-registration" role="tabpanel" aria-labelledby="admin-registration-tab">
                         <div th:insert="~{registration-list :: tbl-list}"></div>
+                    </div>
+                    <div class="tab-pane fade" id="admin-categories" role="tabpanel" aria-labelledby="admin-categories-tab">
+                        <div th:insert="~{categories-list :: tbl-list}"></div>
                     </div>
                     <div class="tab-pane fade" id="admin-settings" role="tabpanel" aria-labelledby="admin-settings-tab">...</div>
                 </div>
