@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+
+    <div th:insert="~{fragments :: header}"></div>
+
+    <title>category</title>
+</head>
+
+<body>
+
+<div th:fragment="tbl-list">
+
+    <p><a th:href="@{/category}" class="btn btn-coral"
+         >category</a></p><br/>
+
+    <table class="container table table-hover" th:switch="${categories}">
+        <div th:if="${param.deleted}">
+            <div class="alert alert-info" >deleted</div>
+        </div>
+        <h2 th:case="null" >nocategories</h2>
+        <tr th:case="*">
+            <h2 ></h2>
+            <thead>
+            <tr>
+                <th class="mb-1" >name</th>
+                <th class="mb-1"></th>
+                <th class="mb-1"></th>
+            </tr>
+            </thead>
+            <tbody th:each="category : ${categories}">
+            <tr>
+                <td class="mb-1" th:text="${category.name}"></td>
+                <td>
+                    <a th:href="@{/category/edit/{id}(id=${category.id})}"
+                       class="btn btn-warning btn-sm">EDIT</a>
+                </td>
+                <td>
+                    <a th:href="@{/category/delete/{id}(id=${category.id})}"
+                       class="btn btn-danger btn-sm"
+                      >delete</a>
+                </td>
+            </tr>
+            </tbody>
+    </table>
+</div>
+
+</body>
+
+<div th:insert="~{fragments :: scripts}"></div>
+
+</html>
