@@ -5,13 +5,14 @@
 
     <head>
 
-        <div th:insert="~{fragments :: header}"></div>
+        <div th:insert="~{fragments :: header_res}"></div>
 
         <title th:text="#{title.registration.list}"></title>
     </head>
 
     <body>
 
+    <div class="container">
     <div th:fragment="tbl-list">
 
         <p><a th:href="@{/registration}" class="btn btn-coral"
@@ -50,7 +51,7 @@
                 </tbody>
         </table>
     </div>
-
+    </div>
     </body>
 
     <div th:insert="~{fragments :: scripts}"></div>
