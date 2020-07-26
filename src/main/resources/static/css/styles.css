@@ -23,6 +23,21 @@ h4 {
     margin-bottom: 30px;
 }
 
+.button{
+border-bottom: none;
+}
+
+.card-title {
+    color: black;
+}
+.card-text{
+    color: black;
+}
+
+.btn btn-primary {
+    color: #3291a8;
+}
+
 .error-message {
     color: red;
 }
@@ -334,3 +349,15 @@ footer .glyphicon {
         -webkit-transform: translateY(0%);
     }
 }
+
+.btn-group {
+
+    padding-bottom: 5px;
+    width: 200px;
+}
+
+.button{
+    padding-bottom: 5px;
+    width: 150px
+}
+
