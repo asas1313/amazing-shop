@@ -5,23 +5,21 @@
 
     <head>
 
-        <div class="jumbotron">
-
-            <div th:insert="~{fragments :: header}"></div>
+            <div th:insert="~{fragments :: header_res}"></div>
 
             <title th:text="#{title.dashboard}"></title>
-
-        </div>
     </head>
 
     <body>
+
+    <div class="container">
 
         <div th:insert="~{fragments :: menu}"></div>
 
         <h4 th:text="#{dashboard.text}"></h4>
 
         <div th:insert="~{fragments :: copy}"></div>
-
+    </div>
     </body>
 
 </html>
