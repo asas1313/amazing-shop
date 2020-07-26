@@ -19,36 +19,11 @@
         <div class="row">
             <div class="col-2">
                 <div class="nav flex-sm-column" id="admin-tabBar" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link nav-text" id="admin-index-tab" data-toggle="pill" href="#admin-index"
-                       role="tab" aria-controls="admin-index" aria-selected="false"
-                       th:text="#{menu.index}"></a>
-                    <a class="nav-link active" id="admin-admin-tab" data-toggle="pill" href="#admin-admin"
-                       role="tab" aria-controls="admin-messages" aria-selected="true"
-                       th:text="#{menu.admin}"></a>
-                    <a class="nav-link" id="admin-registration-tab" data-toggle="pill" href="#admin-registration"
-                       role="tab" aria-controls="admin-registration" aria-selected="false"
-                       th:text="#{menu.registration}"></a>
-                    <a class="nav-link" id="admin-categories-tab" data-toggle="pill" href="#admin-categories"
-                       role="tab" aria-controls="admin-categories" aria-selected="false"
-                       th:text="#{menu.categories}"></a>
-                    <a class="nav-link" id="admin-settings-tab" data-toggle="pill" href="#admin-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
-                </div>
-            </div>
-            <div class="col-8">
-                <div class="tab-content" id="admin-tabContent">
-                    <div class="tab-pane fade" id="admin-index" role="tabpanel" aria-labelledby="admin-index-tab">
-                        This is some text
-                    </div>
-                    <div class="tab-pane fade show active" id="admin-admin" role="tabpanel" aria-labelledby="admin-admin-tab">
-                        Some admin tab text
-                    </div>
-                    <div class="tab-pane fade" id="admin-registration" role="tabpanel" aria-labelledby="admin-registration-tab">
-                        <div th:insert="~{registration-list :: tbl-list}"></div>
-                    </div>
-                    <div class="tab-pane fade" id="admin-categories" role="tabpanel" aria-labelledby="admin-categories-tab">
-                        <div th:insert="~{categories-list :: tbl-list}"></div>
-                    </div>
-                    <div class="tab-pane fade" id="admin-settings" role="tabpanel" aria-labelledby="admin-settings-tab">...</div>
+                    <a class="nav-link nav-text" href="#admin-index" aria-selected="false">Index</a>
+                    <a class="nav-link active" href="#admin-admin" aria-selected="true">Admin</a>
+                    <a class="nav-link" href="/registrations" aria-selected="false">Registration</a>
+                    <a class="nav-link" href="/categories" aria-selected="false">Categories</a>
+                    <a class="nav-link" href="#admin-settings" aria-selected="false">Settings</a>
                 </div>
             </div>
         </div>

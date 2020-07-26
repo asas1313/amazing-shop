@@ -18,7 +18,7 @@
         <p><a th:href="@{/registration}" class="btn btn-coral"
               th:text="#{registration.list.button.add}"></a></p><br/>
 
-        <table class="container table table-hover" th:switch="${users}">
+        <table class="container table table-hover" th:switch="${customers}">
             <div th:if="${param.deleted}">
                 <div class="alert alert-info" th:text="#{registration.list.deleted}"></div>
             </div>
@@ -33,7 +33,7 @@
                         <th class="mb-1"></th>
                     </tr>
                 </thead>
-                <tbody th:each="customer : ${users}">
+                <tbody th:each="customer : ${customers}">
                     <tr>
                         <td class="mb-1" th:text="${customer.email}"></td>
                         <td class="mb-1" th:text="${customer.login}"></td>
