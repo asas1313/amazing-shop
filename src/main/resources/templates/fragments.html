@@ -19,7 +19,7 @@
 
 
 <body>
-<header th:fragment="menu">
+<header th:fragment="menu" class="row">
     <h1>Amazing shop</h1>
     <p>From zero to hero</p>
 
@@ -35,15 +35,15 @@
             <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{menu.logout}">Logout</a></li>
             <li><a href="/admin" th:text="#{menu.admin}">Administrator</a></li>
         </ul>
-<!--        <span class="nav-item">-->
-<!--                    <div>-->
-<!--                        <label for="locales" id="lang-bar" th:text="#{lang.change}"></label>-->
-<!--                        <select id="locales">-->
-<!--                            <option value="en" th:text="#{lang.eng}"></option>-->
-<!--                            <option value="lt" th:text="#{lang.lt}"></option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </span>-->
+        <!--        <span class="nav-item">-->
+        <!--                    <div>-->
+        <!--                        <label for="locales" id="lang-bar" th:text="#{lang.change}"></label>-->
+        <!--                        <select id="locales">-->
+        <!--                            <option value="en" th:text="#{lang.eng}"></option>-->
+        <!--                            <option value="lt" th:text="#{lang.lt}"></option>-->
+        <!--                        </select>-->
+        <!--                    </div>-->
+        <!--                </span>-->
     </nav>
     <nav class="site-nav">
         <form class="form-inline" th:action="@{/search}" method="get">
@@ -60,7 +60,7 @@
     <p>&copy; 2020 Vilnius JAVA 4</p>
 </footer>
 
-<div class="jumbotron" th:fragment="sidebar">
+<div class="jumbotron white" th:fragment="sidebar">
     <div class="btn-group">
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
@@ -78,7 +78,6 @@
         </div>
     </div>
     <br/>
-
 
 
     <div class="btn-group">
@@ -124,6 +123,13 @@
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
+
+    <script language="JavaScript">
+    $('.carousel').carousel({
+      interval: 4000
+      })
+
+    </script>
 </div>
 </body>
 </html>

@@ -13,23 +13,32 @@
 
 <body>
 <div class="container">
-<div th:insert="~{fragments :: menu}"></div>
-<div th:insert="~{fragments :: sidebar}"></div>
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="/img/iphone.png" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">AIPONAS 10</h5>
-        <p class="card-text">Visi mygtukai veikia</p>
-        <button type="button" class="btn btn-outline-info">1200 EUR</button>
-        <br>
-        <button type="button" class="btn btn-info">Add to cart</button>
-        <button type="button" class="btn btn-info">Buy now!</button>
+
+    <div th:insert="~{fragments :: menu}"></div>
+
+    <br/>
+    <div class="row">
+        <div class="col-3" th:insert="~{fragments :: sidebar}"></div>
+        <div class="col-9">
+<!--            this is where the custom page content should be-->
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/img/iphone.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">AIPONAS 10</h5>
+                    <p class="card-text">Visi mygtukai veikia</p>
+                    <button type="button" class="btn btn-outline-info">1200 EUR</button>
+                    <br>
+                    <button type="button" class="btn btn-info">Add to cart</button>
+                    <button type="button" class="btn btn-info">Buy now!</button>
+                </div>
+            </div>
+        </div>
     </div>
+    <div th:insert="~{fragments :: copy}"></div>
+
+    <div th:insert="~{fragments :: scripts}"></div>
+
 </div>
 
-<div th:insert="~{fragments :: copy}"></div>
-
-<div th:insert="~{fragments :: scripts}"></div>
-</div>
 </body>
 </html>
