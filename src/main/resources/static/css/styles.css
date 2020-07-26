@@ -3,7 +3,9 @@ body {
     line-height: 1.8;
     color: #f6f6f6;
     background-color: #3291a8;
+
 }
+
 
 h2 {
     font-size: 24px;
@@ -19,6 +21,21 @@ h4 {
     color: #303030;
     font-weight: 400;
     margin-bottom: 30px;
+}
+
+.button{
+border-bottom: none;
+}
+
+.card-title {
+    color: black;
+}
+.card-text{
+    color: black;
+}
+
+.btn btn-primary {
+    color: #3291a8;
 }
 
 .error-message {
@@ -219,6 +236,98 @@ footer .glyphicon {
     visibility: visible;
 }
 
+    /* slider */
+
+    /* container */
+
+    /*html {
+        background-color: #3291A8; *//* coral blue *//*
+        color: #F6F6F6;
+        padding: 100px 25px;
+        font-family: Montserrat, sans-serif;
+    }
+    body {
+        font-family: Tahoma, sans-serif;
+        font-size: 87%;
+    }*/
+    .container {
+        max-width: 940px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #FFF;
+        padding-left: 40px;
+        padding-right: 40px;
+        box-sizing: border-box;
+    }
+    header {
+        padding-top: 20px;
+        color:#3291a8;
+        }
+    header h1 {
+        margin:0;
+        font-weight: normal;
+        font-size: 165%;
+        }
+    header p {
+        margin: 0;
+        }
+    .site-nav {
+        margin-top: 20px;
+    }
+    .site-nav ul{
+        margin: 0;
+        padding: 0;
+    }
+    .site-nav li{
+        list-style: none;
+        float: left;
+        margin-right: 5px;
+    }
+    .site-nav a {
+        display: block;
+        color: #3291A8;
+        text-decoration: none;
+        padding: 10px 20px;
+        border: 3px solid #D1EAF0;
+        border-bottom: none;
+    }
+    .site-nav a:hover{
+        background-color: #D1EAF0;
+    }
+    .content-area {
+        border-top: 3px solid #D1EAF0;
+        border-bottom: 3px solid #D1EAF0;
+        text-align: justify;
+        box-sizing: border-box;
+    }
+    .main-area {
+        width: 66%;
+        float: left;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
+    footer {
+        text-align: center;
+        font-size: 85%;
+        color: #999;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    .group:before,
+    .group:after {
+        content: "";
+        display:table;
+    }
+    .group:after {
+        clear:both;
+    }
+    .group {
+        zoom:1;
+    }
+
+    /* container */
+
+
 /* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
 @keyframes slide {
     0% {
@@ -240,3 +349,15 @@ footer .glyphicon {
         -webkit-transform: translateY(0%);
     }
 }
+
+.btn-group {
+
+    padding-bottom: 5px;
+    width: 200px;
+}
+
+.button{
+    padding-bottom: 5px;
+    width: 150px
+}
+
