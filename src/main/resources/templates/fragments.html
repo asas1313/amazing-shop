@@ -1,38 +1,41 @@
 <!DOCTYPE html>
-<html xmlns = "http://www.w3.org/1999/xhtml"
-      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-      xmlns:th = "http://www.thymeleaf.org">
-    <head>
-        <div th:fragment="header_res">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="header_res">
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <title>Amazing shop</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel='stylesheet' type='text/css' media='screen' href='/css/screen.css'>
-        </div>
-        <title>Title</title>
-    </head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/styles.css">
+    </div>
+    <title>Title</title>
+</head>
 
 
+<body>
+<header th:fragment="menu">
+    <h1>Amazing shop</h1>
+    <p>From zero to hero</p>
 
-    <body>
-    <header th:fragment="menu">
-        <h1>Amazing shop</h1>
-        <p>From zero to hero</p>
-
-        <nav class="site-nav">
-            <ul class="group">
-                <li><a href="/dashboard" th:text="#{menu.dashboard}"></a></li>
-                <li><a href="#">Today's Deals</a></li>
-                <li><a href="#">FAQ's</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Chart</a></li>
-                <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" th:text="#{menu.login}">Login</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{menu.logout}">Logout</a></li>
-                <li><a href="/admin" th:text="#{menu.admin}">Administrator</a></li>
-            </ul>
-            <span class="nav-item">
+    <nav class="site-nav">
+        <ul class="group">
+            <li><a href="/" th:text="#{menu.home}"></a></li>
+            <li><a href="#">Today's Deals</a></li>
+            <li><a href="#">FAQ's</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Chart</a></li>
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" th:text="#{menu.login}">Login</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{menu.logout}">Logout</a></li>
+            <li><a href="/admin" th:text="#{menu.admin}">Administrator</a></li>
+        </ul>
+        <span class="nav-item">
                     <div>
                         <label for="locales" id="lang-bar" th:text="#{lang.change}"></label>
                         <select id="locales">
@@ -41,27 +44,33 @@
                         </select>
                     </div>
                 </span>
-        </nav>
+    </nav>
+    <nav class="site-nav">
+        <form class="form-inline" th:action="@{/search}" method="get">
+            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search"
+                   style="width: 1000px; height: 50px">
+
+        </form>
+    </nav>
+
+</header>
 
 
-    </header>
+<footer th:fragment="copy">
+    <p>&copy; 2020 Vilnius JAVA 4</p>
+</footer>
 
-
-    <footer th:fragment="copy">
-        <p>&copy; 2020 Vilnius JAVA 4</p>
-    </footer>
-
-        <div th:fragment="scripts">
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-                    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-                    crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-                    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-                    crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-                    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-                    crossorigin="anonymous"></script>
-            <script src="/js/main.js"></script>
-        </div>
-    </body>
+<div th:fragment="scripts">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+</div>
+</body>
 </html>
