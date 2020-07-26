@@ -349,3 +349,15 @@ footer .glyphicon {
         -webkit-transform: translateY(0%);
     }
 }
+
+.btn-group {
+
+    padding-bottom: 5px;
+    width: 200px;
+}
+
+.button{
+    padding-bottom: 5px;
+    width: 150px
+}
+

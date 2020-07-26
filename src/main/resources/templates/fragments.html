@@ -60,6 +60,59 @@
     <p>&copy; 2020 Vilnius JAVA 4</p>
 </footer>
 
+<div class="jumbotron" th:fragment="sidebar">
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Smartphones
+
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/products/apple}">Apple</a>
+            <a class="dropdown-item" th:href="@{/products/xiaomi}">Xiaomi</a>
+            <a class="dropdown-item" href="#">Samsung</a>
+            <a class="dropdown-item" href="#">Huawei</a>
+            <a class="dropdown-item" href="#">Sony</a>
+            <a class="dropdown-item" href="#">Microsoft</a>
+            <a class="dropdown-item" href="#">HTC</a>
+        </div>
+    </div>
+    <br/>
+
+
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Accessories
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/products/apple}">Cables</a>
+            <a class="dropdown-item" th:href="@{/products/xiaomi}">Headphones</a>
+            <a class="dropdown-item" href="#">Chargers</a>
+            <a class="dropdown-item" href="#">Maintenance</a>
+        </div>
+    </div>
+    <br/>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Tablets
+
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/products/apple}">Apple</a>
+            <a class="dropdown-item" th:href="@{/products/xiaomi}">Xiaomi</a>
+            <a class="dropdown-item" href="#">Samsung</a>
+            <a class="dropdown-item" href="#">Huawei</a>
+            <a class="dropdown-item" href="#">Sony</a>
+            <a class="dropdown-item" href="#">Microsoft</a>
+            <a class="dropdown-item" href="#">HTC</a>
+        </div>
+    </div>
+</div>
+
 <div th:fragment="scripts">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
