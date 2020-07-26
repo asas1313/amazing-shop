@@ -5,20 +5,7 @@
 
     <head>
 
-        <!-- container -->
-
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Amazing shop</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='css/screen.css'>
-        <script src='main.js'></script>
-
-        <!-- container -->
-        <!-- Slider -->
-
-        <meta charset="utf-8">
-        <title>Slider Show </title>
+        <div th:insert="~{fragments :: header_res}"></div>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/styles.css">
@@ -34,47 +21,9 @@
 
     <body>
 
+    <div class="container">
 
-
-        <div class="jumbotron">
-
-<!--            <div th:insert="~{fragments :: menu}"></div>-->
-
-<!--            <h4 th:text = "#{wellcome.text}"></h4>-->
-
-<!--            <div th:insert="~{fragments :: copy}"></div>-->
-
-<!--            <div th:insert="~{fragments :: scripts}"></div>-->
-
-        </div>
-
-
-        <!-- container -->
-
-        <div class="container">
-            <header>
-                <h1>Amazing shop</h1>
-                <p>From zero to hero</p>
-                <nav class="site-nav">
-                    <ul class="group">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Today's Deals</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Chart</a></li>
-                    </ul>
-                </nav>
-            </header>
-            <div class="content-area group">
-                <div class="main-area">
-                </div>
-
-
-        <!-- container -->
-
-                <!-- Search bar -->
+            <div th:insert="~{fragments :: menu}"></div>
 
                 <nav class="site-nav">
                     <form class="form-inline" th:action="@{/search}" method="get">
@@ -83,7 +32,7 @@
                     </form>
                 </nav>
 
-                <!-- Search bar -->
+            <div th:insert="~{fragments :: scripts}"></div>
 
         <!-- Slider -->
 
@@ -114,7 +63,6 @@
             </a>
             </div>
         </div>
-
 
     </body>
 
