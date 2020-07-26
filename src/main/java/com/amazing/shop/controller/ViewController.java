@@ -40,7 +40,9 @@ public class ViewController {
     @GetMapping("/admin")
     public String admin(Model model) {
         List<Customer> users = new CustomerServiceImpl(customerRepository, passwordEncoder).findAll();
+        List<Category> categories = new CategoryService(categoryRepository).findAll();
         model.addAttribute("users", users);
+        model.addAttribute("categories", categories);
         return "admin";
     }
 
@@ -49,15 +51,16 @@ public class ViewController {
         return "dashboard";
     }
 
-    @GetMapping("/registration-list")
+    @GetMapping("/registrations")
     public String registration(Model model) {
-        List<Customer> users = new CustomerServiceImpl(customerRepository, passwordEncoder).findAll();
-        model.addAttribute("users", users);
+        List<Customer> customers = customerRepository.findAll();
+        model.addAttribute("customers", customers);
         return "registration-list";
     }
-    @GetMapping("/categories-list")
+
+    @GetMapping("/categories")
     public String categories(Model model) {
-        List<Category> categories = new CategoryService(categoryRepository).findAll();
+        List<Category> categories = categoryRepository.findAll();
         model.addAttribute("categories", categories);
         return "categories-list";
     }
