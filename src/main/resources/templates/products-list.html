@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th = "http://www.thymeleaf.org">
+
+    <head>
+
+        <div th:insert="~{fragments :: header_res}"></div>
+
+        <title>Products</title>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <br/>
+            <div th:insert="~{fragments :: menu}"></div>
+            <br/>
+            <div class="row">
+                <div class="col-3" th:insert="~{fragments :: sidebar-admin}"></div>
+                <div class="col-9">
+
+                    <p><a th:href="@{/product}" class="btn btn-success">Add product</a></p><br/>
+
+                    <table class="container table table-hover" th:switch="${products}">
+                        <div th:if="${param.deleted}">
+                            <div class="alert alert-info">Deleted</div>
+                        </div>
+                        <h2 th:case="null">No any product</h2>
+                        <tr th:case="*">
+                        <h2>Products</h2>
+                            <thead>
+                                <tr>
+                                    <th class="mb-1">Title</th>
+                                    <th class="mb-1">Brand</th>
+                                    <th class="mb-1">Description</th>
+                                    <th class="mb-1">Price</th>
+                                    <th class="mb-1">Quantity</th>
+                                    <th class="mb-1"></th>
+                                    <th class="mb-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody th:each="product : ${products}">
+                                <tr>
+                                    <td class="mb-1" th:text="${product.title}"></td>
+                                    <td class="mb-1" th:text="${product.brand}"></td>
+                                    <td class="mb-1" th:text="${product.description}"></td>
+                                    <td class="mb-1" th:text="${product.price}"></td>
+                                    <td class="mb-1" th:text="${product.quantity}"></td>
+                                    <td>
+                                        <a th:href="@{/product/edit/{id}(id=${product.id})}"
+                                             class="btn btn-warning btn-sm">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{/product/delete/{id}(id=${product.id})}"
+                                         class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div th:insert="~{fragments :: copy}"></div>
+
+        </div>
+
+        <div th:insert="~{fragments :: scripts}"></div>
+
+    </body>
+
+
+</html>

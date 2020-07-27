@@ -12,48 +12,59 @@
 
     <body>
 
-    <div class="container">
-    <div th:fragment="tbl-list">
+        <div class="container">
+            <br/>
+            <div th:insert="~{fragments :: menu}"></div>
+            <br/>
+            <div class="row">
+                <div class="col-3" th:insert="~{fragments :: sidebar-admin}"></div>
+                <div class="col-9">
 
-        <p><a th:href="@{/registration}" class="btn btn-coral"
-              th:text="#{registration.list.button.add}"></a></p><br/>
+                    <p><a th:href="@{/registration}" class="btn btn-success"
+                          th:text="#{registration.list.button.add}"></a></p><br/>
 
-        <table class="container table table-hover" th:switch="${customers}">
-            <div th:if="${param.deleted}">
-                <div class="alert alert-info" th:text="#{registration.list.deleted}"></div>
+                    <table class="container table table-hover" th:switch="${customers}">
+                        <div th:if="${param.deleted}">
+                            <div class="alert alert-info" th:text="#{registration.list.deleted}"></div>
+                        </div>
+                        <h2 th:case="null" th:text="#{registration.list.nousers}"></h2>
+                        <tr th:case="*">
+                        <h2 th:text="#{registration.list.title}"></h2>
+                            <thead>
+                                <tr>
+                                    <th class="mb-1" th:text="#{registration.list.col.email}"></th>
+                                    <th class="mb-1" th:text="#{registration.list.col.login}"></th>
+                                    <th class="mb-1"></th>
+                                    <th class="mb-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody th:each="customer : ${customers}">
+                                <tr>
+                                    <td class="mb-1" th:text="${customer.email}"></td>
+                                    <td class="mb-1" th:text="${customer.login}"></td>
+                                    <td>
+                                        <a th:href="@{/registration/edit/{id}(id=${customer.id})}"
+                                             class="btn btn-warning btn-sm"
+                                           th:text="#{registration.list.button.edit}"></a>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{/registration/delete/{id}(id=${customer.id})}"
+                                         class="btn btn-danger btn-sm"
+                                       th:text="#{registration.list.button.delete}"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
             </div>
-            <h2 th:case="null" th:text="#{registration.list.nousers}"></h2>
-            <tr th:case="*">
-            <h2 th:text="#{registration.list.title}"></h2>
-                <thead>
-                    <tr>
-                        <th class="mb-1" th:text="#{registration.list.col.email}"></th>
-                        <th class="mb-1" th:text="#{registration.list.col.login}"></th>
-                        <th class="mb-1"></th>
-                        <th class="mb-1"></th>
-                    </tr>
-                </thead>
-                <tbody th:each="customer : ${customers}">
-                    <tr>
-                        <td class="mb-1" th:text="${customer.email}"></td>
-                        <td class="mb-1" th:text="${customer.login}"></td>
-                        <td>
-                            <a th:href="@{/registration/edit/{id}(id=${customer.id})}"
-                                 class="btn btn-warning btn-sm"
-                               th:text="#{registration.list.button.edit}"></a>
-                        </td>
-                        <td>
-                            <a th:href="@{/registration/delete/{id}(id=${customer.id})}"
-                             class="btn btn-danger btn-sm"
-                           th:text="#{registration.list.button.delete}"></a>
-                        </td>
-                    </tr>
-                </tbody>
-        </table>
-    </div>
-    </div>
+
+            <div th:insert="~{fragments :: copy}"></div>
+
+        </div>
+
+        <div th:insert="~{fragments :: scripts}"></div>
+
     </body>
 
-    <div th:insert="~{fragments :: scripts}"></div>
 
 </html>
