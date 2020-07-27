@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th = "http://www.thymeleaf.org">
+    <head>
+
+        <div th:insert="~{fragments :: header_res}"></div>
+
+        <title>Product</title>
+    </head>
+
+    <body>
+
+    <div class="container">
+
+        <div th:insert="~{fragments :: menu}"></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+
+                    <div th:if="${param.success}">
+                        <div class="alert alert-info">Saved!</div>
+                    </div>
+
+                    <h1>Product</h1>
+                    <form th:action="@{/product}" th:object="${product}" method="post">
+
+                        <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+                           th:each="error : ${#fields.errors('global')}"
+                           th:text="#{__${error}__}"></p>
+
+                        <div class="form-group"
+                             th:classappend="${#fields.hasErrors('title')}? 'has-error':''">
+                            <label for="title" class="control-label">Title</label>
+                            <input type="text"
+                                   id="title" name="title" class="form-control"
+                                   th:placeholder="Title" th:field="*{title}" />
+                            <p class="error-message"
+                               th:each="error: ${#fields.errors('title')}"
+                               th:text="#{__${error}__}">Validation error</p>
+                        </div>
+                        <div class="form-group"
+                             th:classappend="${#fields.hasErrors('brand')}? 'has-error':''">
+                            <label for="brand" class="control-label">Brand</label>
+                            <input type="text"
+                                   id="brand" name="brand" class="form-control"
+                                   th:placeholder="Brand" th:field="*{brand}" />
+                            <p class="error-message"
+                               th:each="error : ${#fields.errors('brand')}"
+                               th:text="#{__${error}__}">Validation error</p>
+                        </div>
+                        <div class="form-group"
+                             th:classappend="${#fields.hasErrors('description')}? 'has-error':''">
+                            <label for="description" class="control-label">Description</label>
+                            <input type="text"
+                                   id="description" name="description" class="form-control"
+                                   th:placeholder="Description" th:field="*{description}" />
+                            <p class="error-message"
+                               th:each="error : ${#fields.errors('description')}"
+                               th:text="#{__${error}__}">Validation error</p>
+                        </div>
+                        <div class="form-group"
+                             th:classappend="${#fields.hasErrors('thumbnail')}? 'has-error':''">
+                            <label for="thumbnail" class="control-label">Select thumbnail</label>
+                            <input type="file"
+                                   id="thumbnail" name="thumbnail" class="form-control" th:field="*{thumbnail}" />
+                            <p class="error-message"
+                               th:each="error : ${#fields.errors('thumbnail')}"
+                               th:text="#{__${error}__}">Validation error</p>
+                        </div>
+                        <div class="form-group"
+                             th:classappend="${#fields.hasErrors('price')}? 'has-error':''">
+                            <label for="price" class="control-label">Price</label>
+                            <input type="number"
+                                   id="price" name="price" class="form-control"
+                                   th:placeholder="9.99" th:field="*{price}" />
+                            <p class="error-message"
+                               th:each="error : ${#fields.errors('price')}"
+                               th:text="#{__${error}__}">Validation error</p>
+                        </div>
+                        <div class="form-group"
+                             th:classappend="${#fields.hasErrors('quantity')}? 'has-error':''">
+                            <label for="quantity" class="control-label">Quantity</label>
+                            <input type="number"
+                                   id="quantity" name="quantity" class="form-control"
+                                   th:placeholder="0" th:field="*{quantity}" />
+                            <p class="error-message"
+                               th:each="error : ${#fields.errors('quantity')}"
+                               th:text="#{__${error}__}">Validation error</p>
+                        </div>
+                        <div class="form-group">
+                            <input hidden="true" contenteditable="false" id="id" class="form-control" th:field="*{id}" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-coral">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:insert="~{fragments :: copy}"></div>
+
+    </div>
+
+    </body>
+
+</html>

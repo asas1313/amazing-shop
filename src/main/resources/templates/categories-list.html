@@ -3,53 +3,62 @@
       xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns:th = "http://www.thymeleaf.org">
 
-<head>
+    <head>
 
-    <div th:insert="~{fragments :: header}"></div>
+        <div th:insert="~{fragments :: header_res}"></div>
 
-    <title>category</title>
-</head>
+        <title>Categories</title>
+    </head>
 
-<body>
+    <body>
 
-<div th:fragment="tbl-list">
+        <div class="container">
+            <br/>
 
-    <p><a th:href="@{/category}" class="btn btn-coral"
-         >category</a></p><br/>
+            <div th:insert="~{fragments :: menu}"></div>
+                <br/>
+            <div class="row">
+                <div class="col-3" th:insert="~{fragments :: sidebar-admin}"></div>
+                <div class="col-9">
+                    <p><a th:href="@{/category}" class="btn btn-success">Add category</a></p><br/>
+                    <table class="container table table-hover" th:switch="${categories}">
+                        <div th:if="${param.deleted}">
+                            <div class="alert alert-info">Deleted</div>
+                        </div>
+                        <h2 th:case="null">No categories</h2>
+                        <tr th:case="*">
+                            <h2>Categories</h2>
+                            <thead>
+                            <tr>
+                                <th class="mb-1" >name</th>
+                                <th class="mb-1"></th>
+                                <th class="mb-1"></th>
+                            </tr>
+                            </thead>
+                            <tbody th:each="category : ${categories}">
+                            <tr>
+                                <td class="mb-1" th:text="${category.name}"></td>
+                                <td>
+                                    <a th:href="@{/category/edit/{id}(id=${category.id})}"
+                                       class="btn btn-warning btn-sm">EDIT</a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/category/delete/{id}(id=${category.id})}"
+                                       class="btn btn-danger btn-sm"
+                                    >delete</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
 
-    <table class="container table table-hover" th:switch="${categories}">
-        <div th:if="${param.deleted}">
-            <div class="alert alert-info" >deleted</div>
+            <div th:insert="~{fragments :: copy}"></div>
+
+            <div th:insert="~{fragments :: scripts}"></div>
+
         </div>
-        <h2 th:case="null" >nocategories</h2>
-        <tr th:case="*">
-            <h2 ></h2>
-            <thead>
-            <tr>
-                <th class="mb-1" >name</th>
-                <th class="mb-1"></th>
-                <th class="mb-1"></th>
-            </tr>
-            </thead>
-            <tbody th:each="category : ${categories}">
-            <tr>
-                <td class="mb-1" th:text="${category.name}"></td>
-                <td>
-                    <a th:href="@{/category/edit/{id}(id=${category.id})}"
-                       class="btn btn-warning btn-sm">EDIT</a>
-                </td>
-                <td>
-                    <a th:href="@{/category/delete/{id}(id=${category.id})}"
-                       class="btn btn-danger btn-sm"
-                      >delete</a>
-                </td>
-            </tr>
-            </tbody>
-    </table>
-</div>
 
-</body>
-
-<div th:insert="~{fragments :: scripts}"></div>
+    </body>
 
 </html>

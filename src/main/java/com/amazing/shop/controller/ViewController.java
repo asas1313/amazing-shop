@@ -1,13 +1,13 @@
 package com.amazing.shop.controller;
 
 import com.amazing.shop.entity.Category;
+import com.amazing.shop.entity.Product;
 import com.amazing.shop.repository.CategoryRepository;
-import com.amazing.shop.service.CategoryService;
+import com.amazing.shop.repository.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.amazing.shop.entity.Customer;
 import com.amazing.shop.repository.CustomerRepository;
-import com.amazing.shop.service.CustomerServiceImpl;
 import org.springframework.ui.Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,9 @@ public class ViewController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @GetMapping("/")
     public String root() {
         return "index";
@@ -39,10 +42,6 @@ public class ViewController {
 
     @GetMapping("/admin")
     public String admin(Model model) {
-        List<Customer> users = new CustomerServiceImpl(customerRepository, passwordEncoder).findAll();
-        List<Category> categories = new CategoryService(categoryRepository).findAll();
-        model.addAttribute("users", users);
-        model.addAttribute("categories", categories);
         return "admin";
     }
 
@@ -63,6 +62,13 @@ public class ViewController {
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute("categories", categories);
         return "categories-list";
+    }
+
+    @GetMapping("/products")
+    public String products(Model model) {
+        List<Product> products = productRepository.findAll();
+        model.addAttribute("products", products);
+        return "products-list";
     }
 
 }

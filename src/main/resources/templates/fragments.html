@@ -19,7 +19,7 @@
 
 
 <body>
-<header th:fragment="menu" class="row">
+    <header th:fragment="menu" class="row">
     <h1>Amazing shop</h1>
     <p>From zero to hero</p>
 
@@ -55,12 +55,7 @@
 
 </header>
 
-
-<footer th:fragment="copy">
-    <p>&copy; 2020 Vilnius JAVA 4</p>
-</footer>
-
-<div class="jumbotron white" th:fragment="sidebar">
+    <div class="jumbotron white" th:fragment="sidebar">
     <div class="btn-group">
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
@@ -112,7 +107,33 @@
     </div>
 </div>
 
-<div th:fragment="scripts">
+    <div class="jumbotron white" th:fragment="sidebar-admin">
+        <div class="btn-group">
+            <a type="button" class="btn btn-info" th:href="@{/admin}" aria-haspopup="true" aria-expanded="false">
+                Admin home
+            </a>
+        </div>
+        <br/>
+        <div class="btn-group">
+            <a type="button" class="btn btn-info" th:href="@{/registrations}" aria-haspopup="true" aria-expanded="false">
+                User registration
+            </a>
+        </div>
+        <br/>
+        <div class="btn-group">
+            <a type="button" class="btn btn-info" th:href="@{/categories}" aria-haspopup="true" aria-expanded="false">
+                Product categories
+            </a>
+        </div>
+        <br/>
+        <div class="btn-group">
+            <a type="button" class="btn btn-info" th:href="@{/products}" aria-haspopup="true" aria-expanded="false">
+                Products
+            </a>
+        </div>
+    </div>
+
+    <div th:fragment="scripts">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
@@ -131,5 +152,10 @@
 
     </script>
 </div>
+
+    <footer th:fragment="copy">
+        <p>&copy; 2020 Vilnius JAVA 4</p>
+    </footer>
+
 </body>
 </html>
