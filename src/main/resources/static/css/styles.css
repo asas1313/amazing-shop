@@ -363,7 +363,9 @@ footer .glyphicon {
 
 .white{
 background: #fff !important;
+padding: 0px !important;
 }
+
 .slide_container{
 width: 100% !important;
     margin-left: auto;
