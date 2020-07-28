@@ -48,12 +48,8 @@ public class RegistrationController {
             return "registration";
         }
 
-        List<String> roles = new ArrayList<>();
-        roles.add("ROLE_USER");
-        registrationModel.setRoles(roles);
-
         customerService.save(registrationModel);
-        return "redirect:/registration?success";
+        return "redirect:/registrations?success";
     }
 
     @GetMapping("/delete/{id}")
@@ -63,7 +59,7 @@ public class RegistrationController {
             new RuntimeException("There is no account registered with this id");
         }
         customerRepository.delete(existing);
-        return "redirect:/registration-list?deleted";
+        return "redirect:/registrations?deleted";
     }
 
     @GetMapping("/edit/{id}")
@@ -76,6 +72,7 @@ public class RegistrationController {
         customerRegistrationModel.setLogin(customer.getLogin());
         customerRegistrationModel.setEmail(customer.getEmail());
         customerRegistrationModel.setId(customer.getId());
+        customerRegistrationModel.setRole(customer.getRole());
         model.addAttribute("customer", customerRegistrationModel);
         return "registration";
     }

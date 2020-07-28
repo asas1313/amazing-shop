@@ -4,14 +4,14 @@
       xmlns:th = "http://www.thymeleaf.org">
 <head>
 
-    <div th:insert="~{fragments :: header}"></div>
+    <div th:insert="~{fragments :: header_res}"></div>
 
     <title>Category</title>
 </head>
 
 <body>
 
-<div class="jumbotron">
+<div class="container">
 
     <div th:insert="~{fragments :: menu}"></div>
 
@@ -26,35 +26,25 @@
                 <h1>category</h1>
                 <form th:action="@{/category}" th:object="${category}" method="post">
 
-                 <!--   <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+                    <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
                        th:each="error : ${#fields.errors('global')}"
-                       th:text="#{__${error}__}"></p>-->
+                       th:text="#{__${error}__}"></p>
 
                     <div class="form-group"
                          th:classappend="${#fields.hasErrors('name')}? 'has-error':''">
-                        <label for="id" class="control-label"
-                               >ID</label>
-                        <input type="text"
-                               id="id" name="id" class="form-control"
-                               th:placeholder="ID" th:field="*{name}" />
-                     <!--   <p class="error-message"
-                           th:each="error: ${#fields.errors('login')}"
-                           th:text="#{__${error}__}">Validation error</p>-->
-                    </div>
-                    <div class="form-group"
-                         th:classappend="${#fields.hasErrors('name')}? 'has-error':''">
                         <label for="name" class="control-label"
-                              >Name</label>
+                               th:text="Name"></label>
                         <input type="text"
                                id="name" name="name" class="form-control"
                                th:placeholder="Name" th:field="*{name}" />
-                        <!--<p class="error-message"
-                           th:each="error : ${#fields.errors('name')}"
-                           th:text="#{__${error}__}">Validation error</p>-->
+                        <p class="error-message"
+                           th:each="error: ${#fields.errors('name')}"
+                           th:text="#{__${error}__}">Validation error</p>
                     </div>
-                   <!-- <div class="form-group">
+
+                    <div class="form-group">
                         <input hidden="true" contenteditable="false" id="id" class="form-control" th:field="*{id}" />
-                    </div>-->
+                    </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-coral"
                                >Add category</button>

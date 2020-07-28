@@ -3,24 +3,25 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:fragment="header_res">
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Amazing shop</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/styles.css">
-        <link rel='stylesheet' type='text/css' media='screen' href='/css/screen.css'>
-    </div>
+
     <title>Title</title>
 </head>
 
 
 <body>
 
-<header th:fragment="menu" class="row">
+<div th:fragment="header_res">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/screen.css'>
+</div>
+
+    <header th:fragment="menu" class="row">
     <div class="col-12">
     <h1>Amazing shop</h1>
     <p>From zero to hero</p>
@@ -38,15 +39,6 @@
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{menu.logout}">Logout</a></li>
                 <li><a href="/admin" th:text="#{menu.admin}">Administrator</a></li>
             </ul>
-            <!--        <span class="nav-item">-->
-            <!--                    <div>-->
-            <!--                        <label for="locales" id="lang-bar" th:text="#{lang.change}"></label>-->
-            <!--                        <select id="locales">-->
-            <!--                            <option value="en" th:text="#{lang.eng}"></option>-->
-            <!--                            <option value="lt" th:text="#{lang.lt}"></option>-->
-            <!--                        </select>-->
-            <!--                    </div>-->
-            <!--                </span>-->
         </nav>
         <nav class="site-nav">
             <form class="form-inline" th:action="@{/search}" method="get">
@@ -62,101 +54,107 @@
 </header>
 
     <div class="jumbotron white" th:fragment="sidebar">
-    <div class="btn-group">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-            Smartphones
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                Smartphones
 
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" th:href="@{/products/apple}">Apple</a>
-            <a class="dropdown-item" th:href="@{/products/xiaomi}">Xiaomi</a>
-            <a class="dropdown-item" href="#">Samsung</a>
-            <a class="dropdown-item" href="#">Huawei</a>
-            <a class="dropdown-item" href="#">Sony</a>
-            <a class="dropdown-item" href="#">Microsoft</a>
-            <a class="dropdown-item" href="#">HTC</a>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/products/apple}">Apple</a>
+                <a class="dropdown-item" th:href="@{/products/xiaomi}">Xiaomi</a>
+                <a class="dropdown-item" href="#">Samsung</a>
+                <a class="dropdown-item" href="#">Huawei</a>
+                <a class="dropdown-item" href="#">Sony</a>
+                <a class="dropdown-item" href="#">Microsoft</a>
+                <a class="dropdown-item" href="#">HTC</a>
+            </div>
+        </div>
+        <br/>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                Accessories
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/products/apple}">Cables</a>
+                <a class="dropdown-item" th:href="@{/products/xiaomi}">Headphones</a>
+                <a class="dropdown-item" href="#">Chargers</a>
+                <a class="dropdown-item" href="#">Maintenance</a>
+            </div>
+        </div>
+        <br/>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                Tablets
+
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/products/apple}">Apple</a>
+                <a class="dropdown-item" th:href="@{/products/xiaomi}">Xiaomi</a>
+                <a class="dropdown-item" href="#">Samsung</a>
+                <a class="dropdown-item" href="#">Huawei</a>
+                <a class="dropdown-item" href="#">Sony</a>
+                <a class="dropdown-item" href="#">Microsoft</a>
+                <a class="dropdown-item" href="#">HTC</a>
+            </div>
         </div>
     </div>
-    <br/>
-
-
-    <div class="btn-group">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-            Accessories
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" th:href="@{/products/apple}">Cables</a>
-            <a class="dropdown-item" th:href="@{/products/xiaomi}">Headphones</a>
-            <a class="dropdown-item" href="#">Chargers</a>
-            <a class="dropdown-item" href="#">Maintenance</a>
-        </div>
-    </div>
-    <br/>
-
-    <div class="btn-group">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-            Tablets
-
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" th:href="@{/products/apple}">Apple</a>
-            <a class="dropdown-item" th:href="@{/products/xiaomi}">Xiaomi</a>
-            <a class="dropdown-item" href="#">Samsung</a>
-            <a class="dropdown-item" href="#">Huawei</a>
-            <a class="dropdown-item" href="#">Sony</a>
-            <a class="dropdown-item" href="#">Microsoft</a>
-            <a class="dropdown-item" href="#">HTC</a>
-        </div>
-    </div>
-</div>
 
     <div class="jumbotron white" th:fragment="sidebar-admin">
         <div class="btn-group">
-            <a type="button" class="btn btn-info" th:href="@{/admin}" aria-haspopup="true" aria-expanded="false">
-                Admin home
-            </a>
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                Users
+
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/registrations}">View/edit users</a>
+                <a class="dropdown-item" th:href="@{/registration}">Add user</a>
+            </div>
         </div>
         <br/>
+
+
         <div class="btn-group">
-            <a type="button" class="btn btn-info" th:href="@{/registrations}" aria-haspopup="true" aria-expanded="false">
-                User registration
-            </a>
-        </div>
-        <br/>
-        <div class="btn-group">
-            <a type="button" class="btn btn-info" th:href="@{/categories}" aria-haspopup="true" aria-expanded="false">
-                Product categories
-            </a>
-        </div>
-        <br/>
-        <div class="btn-group">
-            <a type="button" class="btn btn-info" th:href="@{/products}" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                 Products
-            </a>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/products}">View/edit products</a>
+                <a class="dropdown-item" th:href="@{/product}">Add product</a>
+                <a class="dropdown-item" th:href="@{/categories}">View/edit product's categories</a>
+                <a class="dropdown-item" th:href="@{/category}">Add product's category</a>
+            </div>
+        </div>
+        <br/>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                Purchase orders
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" th:href="@{/orders}">View/confirm pending orders</a>
+            </div>
         </div>
     </div>
 
     <div th:fragment="scripts">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-            crossorigin="anonymous"></script>
-    <script src="/js/main.js"></script>
-
-    <script language="JavaScript">
-    $('.carousel').carousel({
-      interval: 4000
-      })
-
-    </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                crossorigin="anonymous"></script>
+        <script src="/js/main.js"></script>
 </div>
 
     <footer th:fragment="copy">

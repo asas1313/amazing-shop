@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -28,23 +29,7 @@ public class Customer {
     @Column(nullable = false, columnDefinition = "VARCHAR(250)")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "customers_roles",
-            joinColumns = @JoinColumn(
-                    name = "customer_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"
-            )
-    )
-    private Collection<Role> roles;
+    @Column(nullable = false, columnDefinition = "VARCHAR(250) default 'ROLE_USER'")
+    private String role;
 
-    @Column(columnDefinition = "VARCHAR(250)")
-    private String city;
-
-    @Column(columnDefinition = "VARCHAR(250)")
-    private String address;
-
-    @Column(nullable = false)
-    private int channel;
 }
