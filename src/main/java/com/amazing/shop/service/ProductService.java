@@ -39,6 +39,7 @@ public class ProductService {
         Product product = new Product();
         product.setId(registrationModel.getId());
         product.setTitle(registrationModel.getTitle());
+        product.setBrand(registrationModel.getBrand());
         product.setDescription(registrationModel.getDescription());
         product.setThumbnail(registrationModel.getThumbnail());
         product.setPrice(registrationModel.getPrice());
