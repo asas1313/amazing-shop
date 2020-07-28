@@ -74,6 +74,17 @@
                                th:each="error : ${#fields.errors('confirmPassword')}"
                                th:text="#{__${error}__}">Validation error</p>
                         </div>
+                        <div class="form-group"
+                             th:classappend="${#fields.hasErrors('role')}? 'has-error':''">
+                            <label for="role" class="control-label"
+                                   th:text="Role"></label>
+                            <input type="text"
+                                   id="role" name="role" class="form-control"
+                                   th:placeholder="Role" th:field="*{role}" />
+                            <p class="error-message"
+                               th:each="error : ${#fields.errors('role')}"
+                               th:text="#{__${error}__}">Validation error</p>
+                        </div>
                         <div class="form-group">
                             <input hidden="true" contenteditable="false" id="id" class="form-control" th:field="*{id}" />
                         </div>

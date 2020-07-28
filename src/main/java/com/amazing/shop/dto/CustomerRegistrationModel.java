@@ -33,7 +33,8 @@ public class CustomerRegistrationModel implements Serializable {
     @NotBlank(message = "error.field.not.blank")
     private String email;
 
-    private Collection<String> roles;
+    @NotBlank(message = "error.field.not.blank")
+    private String role;
 
     @AssertTrue
     private Boolean terms;

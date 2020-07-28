@@ -70,5 +70,4 @@ public class ViewController {
         model.addAttribute("products", products);
         return "products-list";
     }
-
 }

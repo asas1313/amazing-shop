@@ -10,9 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.amazing.shop.dto.CustomerRegistrationModel;
 import com.amazing.shop.entity.Customer;
-import com.amazing.shop.entity.Role;
 import com.amazing.shop.repository.CustomerRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -50,14 +50,8 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setLogin(registrationModel.getLogin());
         customer.setEmail(registrationModel.getEmail());
         customer.setPassword(passwordEncoder.encode(registrationModel.getPassword()));
-        customer.setRoles(remapRoles(registrationModel.getRoles()));
+        customer.setRole(registrationModel.getRole());
         return customerRepository.save(customer);
-    }
-
-    private Collection<Role> remapRoles(Collection<String> roles) {
-        return roles.stream()
-                .map(Role::new)
-                .collect(toSet());
     }
 
     @Override
@@ -66,20 +60,16 @@ public class CustomerServiceImpl implements CustomerService {
         if (customer == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
+        List<GrantedAuthority> ga = new ArrayList<>();
+        ga.add(new SimpleGrantedAuthority(customer.getRole()));
         return new User(customer.getLogin(),
                 customer.getPassword(),
-                mapRolesToAuthorities(customer.getRoles()));
+                ga);
     }
 
     @Override
     public List<Customer> findAll() {
 
         return customerRepository.findAll();
-    }
-
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        return roles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .collect(toList());
     }
 }

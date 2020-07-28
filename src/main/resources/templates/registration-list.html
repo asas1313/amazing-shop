@@ -27,6 +27,9 @@
                         <div th:if="${param.deleted}">
                             <div class="alert alert-info" th:text="#{registration.list.deleted}"></div>
                         </div>
+                        <div th:if="${param.success}">
+                            <div class="alert alert-info" th:text="#{registration.alert}"></div>
+                        </div>
                         <h2 th:case="null" th:text="#{registration.list.nousers}"></h2>
                         <tr th:case="*">
                         <h2 th:text="#{registration.list.title}"></h2>
