@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -30,6 +31,14 @@ public class ProductController {
     public String showProductsForm() {
         return "product";
     }
+
+    @GetMapping("/productFilter")
+    public String getBrand(@RequestParam String brand, Model model) {
+        List<Product> products = productRepository.findByBrand(brand);
+        model.addAttribute("products", products);
+        return "brands";
+    }
+
 
     @PostMapping
     public String add(@ModelAttribute("product") @Valid ProductRegistrationModel registrationModel,
