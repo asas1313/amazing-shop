@@ -29,7 +29,7 @@ public class ProductService {
         return productRepository.findByTitle(title);
     }
 
-    public Optional<Product> findByBrand(String brand) {
+    public List<Product> findByBrand(String brand) {
 
         return productRepository.findByBrand(brand);
     }
