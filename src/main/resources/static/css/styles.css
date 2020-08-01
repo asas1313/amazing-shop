@@ -377,6 +377,20 @@ width: 100% !important;
 }
 
 .Primary-price {
+    color: darkred;
+    text-decoration-line: line-through;
+}
+
+.Price-discount {
+    color: #1e6e82;
+    }
+/*.rowproducts{
+    margin-bottom: 15px;
+}*/
+.classWithPad {
+    margin:3px; padding:5px;
+}
+.Primary-price {
     color: darkRed;
     text-decoration-line: line-through;
 }
