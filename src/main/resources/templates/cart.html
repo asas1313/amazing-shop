@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+
+    <div th:insert="~{fragments :: header_res}"></div>
+
+    <title th:text="#{title.cart}"></title>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div th:insert="~{fragments :: menu}"></div>
+    <br/>
+    <div class="row">
+        <div class="col-3" th:insert="~{fragments :: sidebar}"></div>
+        <div class="faqs" th:insert="~{fragments :: sidebar-cart}"></div>
+        <div class="col-9">
+            <br/>
+            <p>
+            <h3 style="color: #3291a8">Cart</h3>
+            </p>
+        </div>
+    </div>
+
+    <div th:insert="~{fragments :: copy}"></div>
+
+</div>
+
+<div th:insert="~{fragments :: scripts}"></div>
+
+</body>
