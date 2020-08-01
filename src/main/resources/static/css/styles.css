@@ -376,3 +376,11 @@ width: 100% !important;
     box-sizing: border-box;
 }
 
+.Primary-price {
+    color: darkRed;
+    text-decoration-line: line-through;
+}
+.Price-discount {
+    color: #1e6e82;
+    }
+
