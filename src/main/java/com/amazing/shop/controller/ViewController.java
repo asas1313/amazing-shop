@@ -40,6 +40,31 @@ public class ViewController {
         return "login";
     }
 
+    @GetMapping("/deals")
+    public String deals (Model model) {
+        return "deals";
+    }
+
+    @GetMapping("/faqs")
+    public String faqs (Model model) {
+        return "faqs";
+    }
+
+    @GetMapping("/aboutus")
+    public String aboutus (Model model) {
+        return "aboutus";
+    }
+
+    @GetMapping("/contactus")
+    public String contactus (Model model) {
+        return "contactus";
+    }
+
+    @GetMapping("/cart")
+    public String cart (Model model) {
+        return "cart";
+    }
+
     @GetMapping("/admin")
     public String admin(Model model) {
         return "admin";
