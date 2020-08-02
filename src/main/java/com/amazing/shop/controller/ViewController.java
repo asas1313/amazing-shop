@@ -55,6 +55,11 @@ public class ViewController {
         return "aboutus";
     }
 
+    @GetMapping("/allquestions")
+    public String allquestions (Model model) {
+        return "allquestions";
+    }
+
     @GetMapping("/contactus")
     public String contactus (Model model) {
         return "contactus";

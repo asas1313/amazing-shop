@@ -53,6 +53,17 @@ header p {
     background-color: #d1eaf0;
 }
 
+.allquestions h5{
+    color:#3291a8;
+    padding-top: 20px;
+    margin-bottom: 0;
+    text-decoration: underline;
+}
+
+.allquestions p{
+    color:#9fd3e0
+}
+
 .form-inline{
     padding-bottom: 20px;
 }
@@ -62,11 +73,17 @@ header p {
     text-align: justify;
     box-sizing: border-box;
 }
+.content-area group {
+    width: 100%;
+}
 .main-area {
     width: 66%;
     float: left;
     padding-right: 20px;
     box-sizing: border-box;
+}
+.main-area allquestions{
+    width: 100%;
 }
 footer {
     text-align: center;
