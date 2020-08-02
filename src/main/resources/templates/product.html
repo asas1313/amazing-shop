@@ -35,7 +35,7 @@
 <!--                            <label for="title" class="control-label" >Title</label>-->
                             <input type="text"
                                    id="title" name="title" class="form-control"
-                                   th:placeholder="Title" th:field="*{title}" />
+                                   th:placeholder="Title" th:field="*{title}" required/>
                             <p class="error-message"
                                th:each="error: ${#fields.errors('title')}"
                                th:text="#{__${error}__}">Validation error</p>
@@ -45,7 +45,7 @@
 <!--                            <label for="brand" class="control-label">Brand</label>-->
                             <input type="text"
                                    id="brand" name="brand" class="form-control"
-                                   th:placeholder="Brand" th:field="*{brand}" />
+                                   th:placeholder="Brand" th:field="*{brand}"required />
                             <p class="error-message"
                                th:each="error : ${#fields.errors('brand')}"
                                th:text="#{__${error}__}">Validation error</p>
@@ -55,7 +55,7 @@
 <!--                            <label for="description" class="control-label">Description</label>-->
                             <input type="text"
                                    id="description" name="description" class="form-control"
-                                   th:placeholder="Description" th:field="*{description}" />
+                                   th:placeholder="Description" th:field="*{description}" required/>
                             <p class="error-message"
                                th:each="error : ${#fields.errors('description')}"
                                th:text="#{__${error}__}">Validation error</p>
@@ -64,7 +64,7 @@
                              th:classappend="${#fields.hasErrors('thumbnail')}? 'has-error':''">
 <!--                            <label for="thumbnail" class="control-label">Select thumbnail</label>-->
                             <input type="file"
-                                   id="thumbnail" name="thumbnail"  th:field="*{thumbnail}" style="color: black !important"/>
+                                   id="thumbnail" name="thumbnail"  th:field="*{thumbnail}" style="color: black !important" />
                             <p class="error-message"
                                th:each="error : ${#fields.errors('thumbnail')}"
                                th:text="#{__${error}__}">Validation error</p>
@@ -74,7 +74,7 @@
                             <label for="price" class="control-label">Price</label>
                             <input type="number"
                                    id="price" name="price" class="form-control"
-                                   th:placeholder="9.99" th:field="*{price}" />
+                                   th:placeholder="9.99" th:field="*{price}" required/>
                             <p class="error-message"
                                th:each="error : ${#fields.errors('price')}"
                                th:text="#{__${error}__}">Validation error</p>
@@ -84,7 +84,7 @@
                             <label for="quantity" class="control-label">Quantity</label>
                             <input type="number"
                                    id="quantity" name="quantity" class="form-control"
-                                   th:placeholder="0" th:field="*{quantity}" />
+                                   th:placeholder="0" th:field="*{quantity}" required min="1"/>
                             <p class="error-message"
                                th:each="error : ${#fields.errors('quantity')}"
                                th:text="#{__${error}__}">Validation error</p>

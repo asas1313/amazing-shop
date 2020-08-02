@@ -53,6 +53,8 @@ public class ProductController {
             return "product";
         }
 
+        registrationModel.setBrand(registrationModel.getBrand().trim());
+
         productService.save(registrationModel);
         return "redirect:/product?success";
     }
