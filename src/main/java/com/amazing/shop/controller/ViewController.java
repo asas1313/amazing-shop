@@ -60,11 +60,6 @@ public class ViewController {
         return "contactus";
     }
 
-    @GetMapping("/cart")
-    public String cart (Model model) {
-        return "cart";
-    }
-
     @GetMapping("/admin")
     public String admin(Model model) {
         return "admin";

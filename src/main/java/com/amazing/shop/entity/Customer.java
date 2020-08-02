@@ -8,6 +8,8 @@ import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -31,5 +33,8 @@ public class Customer {
 
     @Column(nullable = false, columnDefinition = "VARCHAR(250) default 'ROLE_USER'")
     private String role;
+
+    @OneToMany(mappedBy = "customer")
+    List<CartLine> cartLines;
 
 }
