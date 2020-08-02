@@ -19,10 +19,6 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
 
-                    <div th:if="${param.success}">
-                        <div class="alert alert-info">Saved!</div>
-                    </div>
-
                     <h1>Product</h1>
                     <form th:action="@{/product}" th:object="${product}" method="post">
 

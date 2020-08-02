@@ -56,7 +56,7 @@ public class ProductController {
         registrationModel.setBrand(registrationModel.getBrand().trim());
 
         productService.save(registrationModel);
-        return "redirect:/product?success";
+        return "redirect:/products?success";
     }
 
     @GetMapping("/delete/{id}")
@@ -66,7 +66,7 @@ public class ProductController {
             new RuntimeException("There is no product with this id");
         }
         productRepository.delete(existing);
-        return "redirect:/products-list?deleted";
+        return "redirect:/products?deleted";
     }
 
     @GetMapping("/edit/{id}")
@@ -76,6 +76,7 @@ public class ProductController {
             new RuntimeException("There is no product with this id");
         }
         ProductRegistrationModel productRegistrationModel = new ProductRegistrationModel();
+        productRegistrationModel.setId(product.getId());
         productRegistrationModel.setTitle(product.getTitle());
         productRegistrationModel.setBrand(product.getBrand());
         productRegistrationModel.setDescription(product.getDescription());
@@ -84,17 +85,6 @@ public class ProductController {
         productRegistrationModel.setQuantity(product.getQuantity());
 
         model.addAttribute("product", productRegistrationModel);
-        return "product";
+        return "/product";
     }
-
-    @GetMapping("/add-to-cart/{id}/{quantity}")
-    public String addToCart(Model model, @PathVariable Long id, @PathVariable int quantity){
-        Product existing = productService.findById(id).orElse(null);
-        if (existing == null) {
-            new RuntimeException("There is no product with this id");
-        }
-        return "redirect:/products-list?deleted";
-    }
-
-
 }

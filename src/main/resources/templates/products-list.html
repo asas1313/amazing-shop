@@ -23,6 +23,10 @@
                     <p><a th:href="@{/product}" class="btn btn-success">Add product</a></p><br/>
 
                     <table class="container table table-hover" th:switch="${products}">
+
+                        <div th:if="${param.success}">
+                            <div class="alert alert-info">Saved!</div>
+                        </div>
                         <div th:if="${param.deleted}">
                             <div class="alert alert-info">Deleted</div>
                         </div>
