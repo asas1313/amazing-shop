@@ -4,6 +4,7 @@ import com.amazing.shop.entity.Category;
 import com.amazing.shop.entity.Product;
 import com.amazing.shop.repository.CategoryRepository;
 import com.amazing.shop.repository.ProductRepository;
+import com.amazing.shop.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.amazing.shop.entity.Customer;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -29,6 +31,9 @@ public class ViewController {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping("/")
     public String root() {
@@ -89,5 +94,14 @@ public class ViewController {
         List<Product> products = productRepository.findAll();
         model.addAttribute("products", products);
         return "products-list";
+    }
+
+    @GetMapping("/add-to-cart/{id}/{quantity}")
+    public String addToCart(Model model, @PathVariable Long id, @PathVariable int quantity){
+        Product existing = productService.findById(id).orElse(null);
+        if (existing == null) {
+            new RuntimeException("There is no product with this id");
+        }
+        return "redirect:/cart";
     }
 }
