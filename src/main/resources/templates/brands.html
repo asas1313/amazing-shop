@@ -48,7 +48,32 @@
                     </div>
 
                 </div>
+
+                <h2 th:case="null">No any product</h2>
+                <tr th:case="*">
+                    <h2>Products</h2>
+
+                    <tbody th:each="product : ${products}">
+                    <tr>
+                        <td class="mb-1" th:text="${product.title}"></td>
+                        <td class="mb-1" th:text="${product.brand}"></td>
+                        <td class="mb-1" th:text="${product.description}"></td>
+                        <td class="mb-1" th:text="${product.price}"></td>
+                        <td class="mb-1" th:text="${product.quantity}"></td>
+                        <td>
+                            <a th:href="@{/product/edit/{id}(id=${product.id})}"
+                               class="btn btn-warning btn-sm">Edit</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/product/delete/{id}(id=${product.id})}"
+                               class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+
             </div>
+
 
         </div>
     </div>
