@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.hibernate.annotations.Check;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Data
@@ -42,4 +43,7 @@ public class Product {
     //once the table is done this should be done
    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Category productCategory;
+
+    @OneToMany(mappedBy = "product")
+    Set<CartLine> cartLines;
 }

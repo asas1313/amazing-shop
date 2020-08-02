@@ -1,5 +1,6 @@
 package com.amazing.shop.dto;
 
+import com.amazing.shop.entity.CartLine;
 import lombok.Data;
 import com.amazing.shop.constraint.FieldMatch;
 
@@ -8,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 @FieldMatch.List({
         @FieldMatch(
@@ -38,5 +40,7 @@ public class CustomerRegistrationModel implements Serializable {
 
     @AssertTrue
     private Boolean terms;
+
+    private List<CartLineRegistrationModel> cartLines;
 
 }

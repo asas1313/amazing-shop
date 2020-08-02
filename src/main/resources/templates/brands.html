@@ -20,11 +20,35 @@
     <div class="row">
         <div class="col-3" th:insert="~{fragments :: sidebar}"></div>
         <div class="col-9">
+            <!-- box starts -->
+            <div class="row" th:switch="${products}">
+                <div class="" th:each="product : ${products}">
+                    <div class="card border-info mb-3" style="max-width: 18rem;margin: 3px !important">
 
-            <table class="container table table-hover" th:switch="${products}">
-                <div th:if="${param.deleted}">
-                    <div class="alert alert-info">Deleted</div>
+                        <img class="card-img-top" src="/img/iphone_11.jfif" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.title}"></h5>
+                            <p class="card-text" th:text="${product.description}"></p>
+                            <h5 class="Price-discount">
+                                <span>&euro;</span>
+                                <span th:text="${product.price}">&euro</span>
+                            </h5>
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Quantity</span>
+                                </div>
+                                <input type="number" class="form-control" aria-label="Small"
+                                       aria-describedby="inputGroup-sizing-sm" min="1" th:max="${product.quantity}">
+                            </div>
+
+
+                            <button type="button" class="btn btn-info">Add to cart</button>
+
+                        </div>
+                    </div>
+
                 </div>
+
                 <h2 th:case="null">No any product</h2>
                 <tr th:case="*">
                     <h2>Products</h2>
@@ -47,6 +71,9 @@
                     </tr>
                     </tbody>
             </table>
+
+            </div>
+
 
         </div>
     </div>
