@@ -32,8 +32,8 @@
 
                     <div class="form-group"
                          th:classappend="${#fields.hasErrors('name')}? 'has-error':''">
-                        <label for="name" class="control-label"
-                               th:text="Name"></label>
+<!--                        <label for="name" class="control-label"-->
+<!--                               th:text="Name"></label>-->
                         <input type="text"
                                id="name" name="name" class="form-control"
                                th:placeholder="Name" th:field="*{name}" />
