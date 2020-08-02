@@ -39,7 +39,6 @@ public class ProductController {
         return "brands";
     }
 
-
     @PostMapping
     public String add(@ModelAttribute("product") @Valid ProductRegistrationModel registrationModel,
                            BindingResult result) {
@@ -85,4 +84,15 @@ public class ProductController {
         model.addAttribute("product", productRegistrationModel);
         return "product";
     }
+
+    @GetMapping("/add-to-cart/{id}/{quantity}")
+    public String addToCart(Model model, @PathVariable Long id, @PathVariable int quantity){
+        Product existing = productService.findById(id).orElse(null);
+        if (existing == null) {
+            new RuntimeException("There is no product with this id");
+        }
+        return "redirect:/products-list?deleted";
+    }
+
+
 }

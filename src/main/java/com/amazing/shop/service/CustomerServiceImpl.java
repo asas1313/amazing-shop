@@ -1,5 +1,7 @@
 package com.amazing.shop.service;
 
+import com.amazing.shop.dto.CartLineRegistrationModel;
+import com.amazing.shop.entity.CartLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +26,7 @@ import static java.util.stream.Collectors.toSet;
 public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
     private BCryptPasswordEncoder passwordEncoder;
+    private ProductService productService;
 
     @Autowired
     public CustomerServiceImpl(CustomerRepository customerRepository,
@@ -51,7 +54,34 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setEmail(registrationModel.getEmail());
         customer.setPassword(passwordEncoder.encode(registrationModel.getPassword()));
         customer.setRole(registrationModel.getRole());
+        customer.setCartLines(convertCartLineModelToEntity(registrationModel.getCartLines()));
         return customerRepository.save(customer);
+    }
+
+    public List<CartLine> convertCartLineModelToEntity (List<CartLineRegistrationModel> registrationModel) {
+        List<CartLine> returnCartLineList = new ArrayList<>();
+
+        registrationModel.forEach(regModel -> {
+            CartLine line = new CartLine();
+            line.setCustomer(findById(regModel.getCustomerId()).get());
+            line.setProduct(productService.findById(regModel.getProductId()).get());
+            line.setQuantity(regModel.getQuantity());
+            returnCartLineList.add(line);
+        });
+        return returnCartLineList;
+    }
+
+    public List<CartLineRegistrationModel> convertCartEntityToModel ( List<CartLine> cartLines) {
+        List<CartLineRegistrationModel> returnModel = new ArrayList<>();
+
+        cartLines.forEach(line -> {
+            CartLineRegistrationModel retModel = new CartLineRegistrationModel();
+            retModel.setCustomerId(line.getCustomer().getId());
+            retModel.setProductId(line.getProduct().getId());
+            retModel.setQuantity(line.getQuantity());
+            returnModel.add(retModel);
+        });
+        return returnModel;
     }
 
     @Override
