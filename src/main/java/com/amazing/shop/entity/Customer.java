@@ -34,6 +34,14 @@ public class Customer {
     @Column(nullable = false, columnDefinition = "VARCHAR(250) default 'ROLE_USER'")
     private String role;
 
+    @Column(columnDefinition = "VARCHAR(250)")
+    private String city;
+
+    @Column(columnDefinition = "VARCHAR(250)")
+    private String address;
+
+    private Boolean enabled;
+
     @OneToMany(mappedBy = "customer")
     List<CartLine> cartLines;
 

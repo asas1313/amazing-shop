@@ -1,5 +1,6 @@
 package com.amazing.shop.controller;
 
+import com.amazing.shop.dto.CustomerRegistrationModel;
 import com.amazing.shop.entity.Category;
 import com.amazing.shop.entity.Product;
 import com.amazing.shop.repository.CategoryRepository;
@@ -43,6 +44,13 @@ public class ViewController {
     @GetMapping("/login")
     public String login(Model model) {
         return "login";
+    }
+
+    @GetMapping("/register")
+    public String register(Model model) {
+        CustomerRegistrationModel customer = new CustomerRegistrationModel();
+        model.addAttribute("customer", customer);
+        return "registration-user";
     }
 
     @GetMapping("/deals")
@@ -109,4 +117,5 @@ public class ViewController {
         }
         return "redirect:/cart";
     }
+
 }
