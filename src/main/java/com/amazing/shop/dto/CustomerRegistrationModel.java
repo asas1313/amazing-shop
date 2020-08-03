@@ -1,14 +1,12 @@
 package com.amazing.shop.dto;
 
-import com.amazing.shop.entity.CartLine;
-import lombok.Data;
 import com.amazing.shop.constraint.FieldMatch;
+import lombok.Data;
 
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
 @FieldMatch.List({
@@ -35,12 +33,14 @@ public class CustomerRegistrationModel implements Serializable {
     @NotBlank(message = "error.field.not.blank")
     private String email;
 
-    @NotBlank(message = "error.field.not.blank")
-    private String role;
+    private Boolean isAdmin;
 
-    @AssertTrue
-    private Boolean terms;
+    private Boolean enabled;
 
-    private List<CartLineRegistrationModel> cartLines;
+    private String city;
+
+    private String address;
+
+    private List<CartLineRegistrationModel> cartLines = new ArrayList<>();
 
 }

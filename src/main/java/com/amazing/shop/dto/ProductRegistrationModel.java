@@ -1,9 +1,7 @@
 package com.amazing.shop.dto;
 
-import com.sun.javafx.beans.IDProperty;
 import lombok.Data;
 
-import javax.persistence.Id;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;

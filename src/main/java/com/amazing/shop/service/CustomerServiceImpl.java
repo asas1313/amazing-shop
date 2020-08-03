@@ -53,7 +53,13 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setLogin(registrationModel.getLogin());
         customer.setEmail(registrationModel.getEmail());
         customer.setPassword(passwordEncoder.encode(registrationModel.getPassword()));
-        customer.setRole(registrationModel.getRole());
+        if(registrationModel.getIsAdmin())
+            customer.setRole("ROLE_ADMIN");
+        else
+            customer.setRole("ROLE_USER");
+        customer.setEnabled(registrationModel.getEnabled());
+        customer.setCity(registrationModel.getCity());
+        customer.setAddress(registrationModel.getAddress());
         customer.setCartLines(convertCartLineModelToEntity(registrationModel.getCartLines()));
         return customerRepository.save(customer);
     }
@@ -61,13 +67,15 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CartLine> convertCartLineModelToEntity (List<CartLineRegistrationModel> registrationModel) {
         List<CartLine> returnCartLineList = new ArrayList<>();
 
-        registrationModel.forEach(regModel -> {
-            CartLine line = new CartLine();
-            line.setCustomer(findById(regModel.getCustomerId()).get());
-            line.setProduct(productService.findById(regModel.getProductId()).get());
-            line.setQuantity(regModel.getQuantity());
-            returnCartLineList.add(line);
-        });
+        if(!registrationModel.isEmpty()) {
+            registrationModel.forEach(regModel -> {
+                CartLine line = new CartLine();
+                line.setCustomer(findById(regModel.getCustomerId()).get());
+                line.setProduct(productService.findById(regModel.getProductId()).get());
+                line.setQuantity(regModel.getQuantity());
+                returnCartLineList.add(line);
+            });
+        }
         return returnCartLineList;
     }
 

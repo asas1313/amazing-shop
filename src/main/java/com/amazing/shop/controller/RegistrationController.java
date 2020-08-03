@@ -30,11 +30,11 @@ public class RegistrationController {
 
     @GetMapping
     public String showRegistrationForm() {
-        return "registration";
+        return "registration-admin";
     }
 
-    @PostMapping
-    public String register(@ModelAttribute("customer") @Valid CustomerRegistrationModel registrationModel,
+    @PostMapping("/admin")
+    public String registerAdmin(@ModelAttribute("customer") @Valid CustomerRegistrationModel registrationModel,
                            BindingResult result) {
         Customer existing = customerService.findByLogin(registrationModel.getLogin()).orElse(null);
         if ((existing != null
@@ -45,11 +45,30 @@ public class RegistrationController {
         }
 
         if (result.hasErrors()) {
-            return "registration";
+            return "registration-admin";
         }
 
         customerService.save(registrationModel);
         return "redirect:/registrations?success";
+    }
+
+    @PostMapping("/user")
+    public String registerUser(@ModelAttribute("customer") @Valid CustomerRegistrationModel registrationModel,
+                           BindingResult result) {
+        Customer existing = customerService.findByLogin(registrationModel.getLogin()).orElse(null);
+        if ((existing != null
+                || customerRepository.findByEmail(registrationModel.getEmail()).isPresent())
+                && registrationModel.getId() == null) {
+            result.rejectValue("login", ""
+                    , "There is already an account registered with this login or email");
+        }
+
+        if (result.hasErrors()) {
+            return "registration-user";
+        }
+
+        customerService.save(registrationModel);
+        return "redirect:/registration-user?success";
     }
 
     @GetMapping("/delete/{id}")
@@ -72,9 +91,12 @@ public class RegistrationController {
         customerRegistrationModel.setLogin(customer.getLogin());
         customerRegistrationModel.setEmail(customer.getEmail());
         customerRegistrationModel.setId(customer.getId());
-        customerRegistrationModel.setRole(customer.getRole());
+        customerRegistrationModel.setIsAdmin(customer.getRole().equals("ROLE_ADMIN"));
+        customerRegistrationModel.setCity(customer.getCity());
+        customerRegistrationModel.setAddress(customer.getAddress());
+        customerRegistrationModel.setEnabled(customer.getEnabled());
         model.addAttribute("customer", customerRegistrationModel);
-        return "registration";
+        return "registration-admin";
     }
 
 }
