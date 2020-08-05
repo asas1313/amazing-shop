@@ -19,13 +19,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-    private CustomerRepository customerRepository;
-    private BCryptPasswordEncoder passwordEncoder;
+    private final CustomerRepository customerRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
     private ProductService productService;
 
     @Autowired
@@ -98,7 +96,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (customer == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        List<GrantedAuthority> ga = new ArrayList<>();
+        Collection<GrantedAuthority> ga = new ArrayList<>();
         ga.add(new SimpleGrantedAuthority(customer.getRole()));
         return new User(customer.getLogin(),
                 customer.getPassword(),

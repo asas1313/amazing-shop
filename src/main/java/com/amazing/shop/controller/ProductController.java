@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/admin/product")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -22,21 +22,15 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    @ModelAttribute("product")
+    @ModelAttribute("/product")
     public ProductRegistrationModel productRegistrationModel() {
         return new ProductRegistrationModel();
     }
 
     @GetMapping
-    public String showProductsForm() {
+    public String showProductsForm(Model model) {
+        model.addAttribute("product", productRegistrationModel());
         return "product";
-    }
-
-    @GetMapping("/productFilter")
-    public String getBrand(@RequestParam String brand, Model model) {
-        List<Product> products = productRepository.findByBrand(brand);
-        model.addAttribute("products", products);
-        return "brands";
     }
 
     @PostMapping

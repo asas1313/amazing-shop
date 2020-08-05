@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -31,7 +30,7 @@ public class Customer {
     @Column(nullable = false, columnDefinition = "VARCHAR(250)")
     private String password;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(250) default 'ROLE_USER'")
+    @Column(nullable = false, columnDefinition = "VARCHAR(20)")
     private String role;
 
     @Column(columnDefinition = "VARCHAR(250)")

@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-3" th:insert="~{fragments :: sidebar-admin}"></div>
                 <div class="col-9">
-                    <p><a th:href="@{/category}" class="btn btn-success">Add category</a></p><br/>
+                    <p><a th:href="@{/admin/category}" class="btn btn-success">Add category</a></p><br/>
                     <table class="container table table-hover" th:switch="${categories}">
                         <div th:if="${param.deleted}">
                             <div class="alert alert-info">Deleted</div>
@@ -39,13 +39,12 @@
                             <tr>
                                 <td class="mb-1" th:text="${category.name}"></td>
                                 <td>
-                                    <a th:href="@{/category/edit/{id}(id=${category.id})}"
-                                       class="btn btn-warning btn-sm">EDIT</a>
+                                    <a th:href="@{/admin/category/edit/{id}(id=${category.id})}"
+                                       class="btn btn-warning btn-sm">Edit</a>
                                 </td>
                                 <td>
-                                    <a th:href="@{/category/delete/{id}(id=${category.id})}"
-                                       class="btn btn-danger btn-sm"
-                                    >delete</a>
+                                    <a th:href="@{/admin/category/delete/{id}(id=${category.id})}"
+                                       class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                             </tbody>

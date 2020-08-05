@@ -23,8 +23,8 @@
                     <div class="alert alert-info" >category</div>
                 </div>
 
-                <h1>category</h1>
-                <form th:action="@{/category}" th:object="${category}" method="post">
+                <h2>category</h2>
+                <form th:action="@{/admin/category}" th:object="${category}" method="post">
 
                     <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
                        th:each="error : ${#fields.errors('global')}"
@@ -46,8 +46,8 @@
                         <input hidden="true" contenteditable="false" id="id" class="form-control" th:field="*{id}" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-coral"
-                               >Add category</button>
+                        <button type="submit" class="btn btn-info"
+                               >Save</button>
                     </div>
                 </form>
             </div>

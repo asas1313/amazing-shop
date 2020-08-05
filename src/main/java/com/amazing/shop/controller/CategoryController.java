@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/admin/category")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -47,7 +47,7 @@ public class CategoryController {
         }
 
         categoryService.save(registrationModel);
-        return "redirect:/category?success";
+        return "redirect:/admin/category?success";
     }
 
     @GetMapping("/delete/{id}")
@@ -57,7 +57,7 @@ public class CategoryController {
             new RuntimeException("There is no category with this id");
         }
         categoryRepository.delete(existing);
-        return "redirect:/categories-list?deleted";
+        return "redirect:/admin/categories-list?deleted";
     }
 
     @GetMapping("/edit/{id}")

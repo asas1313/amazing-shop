@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
     <title>Title</title>
@@ -29,16 +29,26 @@
     <div class="col-12">
         <nav class="site-nav">
             <ul class="group">
-                <li><a href="/" th:text="#{menu.home}"></a></li>
-                <li><a href="/deals" th:text="#{menu.deals}"></a></li>
-                <li><a href="/faqs" th:text="#{menu.faqs}"></a></li>
-                <li><a href="/aboutus"th:text="#{menu.aboutus}"></a></li>
-                <li><a href="/contactus"th:text="#{menu.contactus}"></a></li>
-                <li><a href="/cart"th:text="#{menu.cart}"></a></li>
-                <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" th:text="#{menu.login}">Login</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" th:text="#{menu.logout}">Logout</a></li>
-                <li><a href="/admin" th:text="#{menu.admin}">Administrator</a></li>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/deals}">Today's Deals</a></li>
+                <li><a th:href="@{/faqs}">FAQ</a></li>
+                <li><a th:href="@{/aboutus}">About</a></li>
+                <li><a th:href="@{/contactus}">Contact Us</a></li>
+                <li><a th:href="@{/cart}">Cart</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+                <li><a th:href="@{/admin}">Admin</a></li>
+                <li><a th:href="@{/userDetails}">User</a></li>
             </ul>
+
+<!--            <h2>Welcome</h2>-->
+<!--            <p>Spring Security tutorial</p>-->
+<!--            <div sec:authorize="hasRole('USER')">Text visible to user.</div>-->
+<!--            <div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>-->
+<!--            <div sec:authorize="isAuthenticated()">-->
+<!--                Text visible only to authenticated users.-->
+<!--            </div>-->
+
         </nav>
         <nav class="site-nav">
             <form class="form-inline" th:action="@{/search}" method="get">
@@ -61,13 +71,13 @@
 
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=apple}">Apple</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=xiaomi}">Xiaomi</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=samsung}">Samsung</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=huawei}">Huawei</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=sony}">Sony</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=microsoft}">Microsoft</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=htc}">HTC</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=apple)}">Apple</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=xiaomi)}">Xiaomi</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=samsung)}">Samsung</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=huawei)}">Huawei</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=sony)}">Sony</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=microsoft)}">Microsoft</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=htc)}">HTC</a>
             </div>
         </div>
         <br/>
@@ -78,10 +88,10 @@
                 Accessories
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=cables}">Cables</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=headphones}">Headphones</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=chargers}">Chargers</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=maintenance}">Maintenance</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=cables)}">Cables</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=headphones)}">Headphones</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=chargers)}">Chargers</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=maintenance)}">Maintenance</a>
             </div>
         </div>
         <br/>
@@ -93,13 +103,13 @@
 
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=appleTab}">Apple</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=xiaomiTab}">Xiaomi</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=samsungTab}">Samsung</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=huaweiTab}">Huawei</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=sonyTab}">Sony</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=microsoftTab}">Microsoft</a>
-                <a class="dropdown-item" th:href="@{/product/productFilter?brand=htcTab}">HTC</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=appleTab)}">Apple</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=xiaomiTab)}">Xiaomi</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=samsungTab)}">Samsung</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=huaweiTab)}">Huawei</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=sonyTab)}">Sony</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=microsoftTab)}">Microsoft</a>
+                <a class="dropdown-item" th:href="@{/productFilter(brand=htcTab)}">HTC</a>
             </div>
         </div>
     </div>
@@ -118,8 +128,8 @@
 
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/registrations}">View/edit users</a>
-                <a class="dropdown-item" th:href="@{/registration}">Add user</a>
+                <a class="dropdown-item" th:href="@{/admin/registrations}">View/edit users</a>
+                <a class="dropdown-item" th:href="@{/admin/registration}">Add user</a>
             </div>
         </div>
         <br/>
@@ -131,10 +141,10 @@
                 Products
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/products}">View/edit products</a>
-                <a class="dropdown-item" th:href="@{/product}">Add product</a>
-                <a class="dropdown-item" th:href="@{/categories}">View/edit product's categories</a>
-                <a class="dropdown-item" th:href="@{/category}">Add product's category</a>
+                <a class="dropdown-item" th:href="@{/admin/products}">View/edit products</a>
+                <a class="dropdown-item" th:href="@{/admin/product}">Add product</a>
+                <a class="dropdown-item" th:href="@{/admin/categories}">View/edit product's categories</a>
+                <a class="dropdown-item" th:href="@{/admin/category}">Add product's category</a>
             </div>
         </div>
         <br/>
@@ -145,7 +155,7 @@
                 Purchase orders
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/orders}">View/confirm pending orders</a>
+                <a class="dropdown-item" th:href="@{/admin/orders}">View/confirm pending orders</a>
             </div>
         </div>
     </div>

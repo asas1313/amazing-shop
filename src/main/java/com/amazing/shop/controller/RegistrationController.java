@@ -11,11 +11,9 @@ import com.amazing.shop.repository.CustomerRepository;
 import com.amazing.shop.service.CustomerService;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
-@RequestMapping("/registration")
+@RequestMapping("/admin/registration")
 public class RegistrationController {
     @Autowired
     private CustomerService customerService;
@@ -49,26 +47,7 @@ public class RegistrationController {
         }
 
         customerService.save(registrationModel);
-        return "redirect:/registrations?success";
-    }
-
-    @PostMapping("/user")
-    public String registerUser(@ModelAttribute("customer") @Valid CustomerRegistrationModel registrationModel,
-                           BindingResult result) {
-        Customer existing = customerService.findByLogin(registrationModel.getLogin()).orElse(null);
-        if ((existing != null
-                || customerRepository.findByEmail(registrationModel.getEmail()).isPresent())
-                && registrationModel.getId() == null) {
-            result.rejectValue("login", ""
-                    , "There is already an account registered with this login or email");
-        }
-
-        if (result.hasErrors()) {
-            return "registration-user";
-        }
-
-        customerService.save(registrationModel);
-        return "redirect:/registration-user?success";
+        return "redirect:/admin/registrations?success";
     }
 
     @GetMapping("/delete/{id}")
@@ -78,7 +57,7 @@ public class RegistrationController {
             new RuntimeException("There is no account registered with this id");
         }
         customerRepository.delete(existing);
-        return "redirect:/registrations?deleted";
+        return "redirect:/admin/registrations?deleted";
     }
 
     @GetMapping("/edit/{id}")
