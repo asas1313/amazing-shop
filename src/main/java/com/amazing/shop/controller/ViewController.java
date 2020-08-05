@@ -5,17 +5,21 @@ import com.amazing.shop.entity.Category;
 import com.amazing.shop.entity.Product;
 import com.amazing.shop.repository.CategoryRepository;
 import com.amazing.shop.repository.ProductRepository;
+import com.amazing.shop.service.CustomerService;
 import com.amazing.shop.service.ProductService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import com.amazing.shop.entity.Customer;
 import com.amazing.shop.repository.CustomerRepository;
 import org.springframework.ui.Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -36,6 +40,9 @@ public class ViewController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CustomerService customerService;
+
     @GetMapping("/")
     public String root() {
         return "index";
@@ -53,18 +60,66 @@ public class ViewController {
         return "registration-user";
     }
 
+    @PostMapping("/registration")
+    public String register(@ModelAttribute("customer") @Valid CustomerRegistrationModel registrationModel,
+                           BindingResult result) {
+        Customer existing = customerService.findByLogin(registrationModel.getLogin()).orElse(null);
+        if ((existing != null
+                || customerRepository.findByEmail(registrationModel.getEmail()).isPresent())
+                && registrationModel.getId() == null) {
+            result.rejectValue("login", ""
+                    , "There is already an account registered with this login or email");
+        }
+
+        if (result.hasErrors()) {
+            return "registration-admin";
+        }
+
+        customerService.save(registrationModel);
+        return "redirect:/registrations?success";
+    }
+
+    @GetMapping("/userDetails")
+    public String showUpdateForm(Model model, Authentication authentication) {
+        CustomerRegistrationModel customerRegistrationModel = new CustomerRegistrationModel();
+
+        if(authentication != null && authentication.isAuthenticated()) {
+
+            String name = authentication.getName();
+            Customer customer = customerRepository.findByLogin(name).orElse(null);
+            if (customer == null) {
+                new RuntimeException("There is no account registered with this username");
+            }
+
+            customerRegistrationModel.setId(customer.getId());
+            customerRegistrationModel.setLogin(customer.getLogin());
+            customerRegistrationModel.setPassword(customer.getPassword());
+            customerRegistrationModel.setConfirmPassword(customer.getPassword());
+            customerRegistrationModel.setLogin(customer.getLogin());
+            customerRegistrationModel.setEmail(customer.getEmail());
+            customerRegistrationModel.setIsAdmin(customer.getRole().equals("ROLE_ADMIN"));
+            customerRegistrationModel.setCity(customer.getCity());
+            customerRegistrationModel.setAddress(customer.getAddress());
+            customerRegistrationModel.setEnabled(customer.getEnabled());
+        } else {
+            new RuntimeException("Please, connect first.");
+        }
+        model.addAttribute("customer", customerRegistrationModel);
+        return "registration-user";
+    }
+
     @GetMapping("/deals")
-    public String deals (Model model) {
+    public String deals(Model model) {
         return "deals";
     }
 
     @GetMapping("/faqs")
-    public String faqs (Model model) {
+    public String faqs(Model model) {
         return "faqs";
     }
 
     @GetMapping("/aboutus")
-    public String aboutus (Model model) {
+    public String aboutus(Model model) {
         return "aboutus";
     }
 
@@ -74,13 +129,8 @@ public class ViewController {
     }
 
     @GetMapping("/contactus")
-    public String contactus (Model model) {
+    public String contactus(Model model) {
         return "contactus";
-    }
-
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        return "admin";
     }
 
     @GetMapping("/dashboard")
@@ -116,6 +166,13 @@ public class ViewController {
             new RuntimeException("There is no product with this id");
         }
         return "redirect:/cart";
+    }
+
+    @GetMapping("/productFilter")
+    public String getBrand(@RequestParam String brand, Model model) {
+        List<Product> products = productRepository.findByBrand(brand);
+        model.addAttribute("products", products);
+        return "brands";
     }
 
 }

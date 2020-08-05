@@ -1,7 +1,7 @@
 package com.amazing.shop.dto;
 
-import com.amazing.shop.constraint.FieldMatch;
 import lombok.Data;
+import com.amazing.shop.constraint.FieldMatch;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

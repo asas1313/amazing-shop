@@ -20,7 +20,7 @@
                 <div class="col-3" th:insert="~{fragments :: sidebar-admin}"></div>
                 <div class="col-9">
 
-                    <p><a th:href="@{/product}" class="btn btn-success">Add product</a></p><br/>
+                    <p><a th:href="@{/admin/product}" class="btn btn-success">Add product</a></p><br/>
 
                     <table class="container table table-hover" th:switch="${products}">
 
@@ -52,11 +52,11 @@
                                     <td class="mb-1" th:text="${product.price}"></td>
                                     <td class="mb-1" th:text="${product.quantity}"></td>
                                     <td>
-                                        <a th:href="@{/product/edit/{id}(id=${product.id})}"
+                                        <a th:href="@{/admin/product/edit/{id}(id=${product.id})}"
                                              class="btn btn-warning btn-sm">Edit</a>
                                     </td>
                                     <td>
-                                        <a th:href="@{/product/delete/{id}(id=${product.id})}"
+                                        <a th:href="@{/admin/product/delete/{id}(id=${product.id})}"
                                          class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
