@@ -23,7 +23,7 @@
                         <div class="alert alert-info" th:text="#{registration.alert}"></div>
                     </div>
 
-                    <h2 th:text="#{registration.title}"></h2>
+                    <h2 th:text="#{registration.title}" style="color:#3291a8"></h2>
                     <form th:action="@{/registration}" th:object="${customer}" method="post">
 
                         <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
@@ -32,8 +32,8 @@
 
                         <div class="form-group"
                              th:classappend="${#fields.hasErrors('login')}? 'has-error':''">
-                            <label for="login" class="control-label"
-                                   th:text="#{registration.login}"></label>
+                            <!--<label for="login" class="control-label"
+                                   th:text="#{registration.login}"></label>-->
                             <input type="text"
                                    id="login" name="login" class="form-control"
                                    th:placeholder="#{registration.login}" th:field="*{login}" />
@@ -43,8 +43,8 @@
                         </div>
                         <div class="form-group"
                              th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-                            <label for="email" class="control-label"
-                                   th:text="#{registration.email}"></label>
+                            <!--<label for="email" class="control-label"
+                                   th:text="#{registration.email}"></label>-->
                             <input type="text"
                                    id="email" name="email" class="form-control"
                                    th:placeholder="#{registration.email}" th:field="*{email}" />
@@ -54,8 +54,8 @@
                         </div>
                         <div class="form-group"
                              th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-                            <label for="password" class="control-label"
-                                   th:text="#{registration.password}"></label>
+                            <!--<label for="password" class="control-label"
+                                   th:text="#{registration.password}"></label>-->
                             <input type="password"
                                    id="password" name="password" class="form-control"
                                    th:placeholder="#{registration.password}" th:field="*{password}" />
@@ -65,8 +65,8 @@
                         </div>
                         <div class="form-group"
                              th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
-                            <label for="confirmPassword" class="control-label"
-                                   th:text="#{registration.confirm.password}"></label>
+                            <!--<label for="confirmPassword" class="control-label"
+                                   th:text="#{registration.confirm.password}"></label>-->
                             <input type="password"
                                    id="confirmPassword" name="confirmPassword" class="form-control"
                                    th:placeholder="#{registration.confirm.password}" th:field="*{confirmPassword}" />
@@ -76,8 +76,8 @@
                         </div>
                         <div class="form-group"
                              th:classappend="${#fields.hasErrors('city')}? 'has-error':''">
-                            <label for="city" class="control-label"
-                                   th:text="City"></label>
+                            <!--<label for="city" class="control-label"
+                                   th:text="City"></label>-->
                             <input type="text"
                                    id="city" name="city" class="form-control"
                                    th:placeholder="City" th:field="*{city}" />
@@ -87,8 +87,8 @@
                         </div>
                         <div class="form-group"
                              th:classappend="${#fields.hasErrors('address')}? 'has-error':''">
-                            <label for="address" class="control-label"
-                                   th:text="Address"></label>
+                            <!--<label for="address" class="control-label"
+                                   th:text="Address"></label>-->
                             <input type="text"
                                    id="address" name="email" class="form-control"
                                    th:placeholder="Address" th:field="*{address}" />
