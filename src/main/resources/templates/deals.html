@@ -20,10 +20,46 @@
         <div class="col-3" th:insert="~{fragments :: sidebar}"></div>
             <div class="deals" th:insert="~{fragments :: sidebar-deals}"></div>
             <div class="col-9">
-            <br/>
-            <p>
-            <h3 style="color: #3291a8">Enjoy Today's Deals</h3>
-            </p>
+
+                <br/>
+                <p>
+                <h3 style="color: #3291a8">Enjoy Today's Deals</h3>
+                </p>
+
+                <!--            this is where the custom page content should be-->
+
+
+                &lt;!&ndash; box starts &ndash;&gt;
+                            <div class="row">
+
+                            <div class="card border-info mb-3" style="max-width: 18rem;">
+
+                                <img class="card-img-top" src="/img/oldie.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Governors best!</h5>
+                                    <p class="card-text">Before buttons were cool & also rings!</p>
+
+                                    <p class="Primary-price">&euro; Banknotes?</p>
+                                    <h5 class="Price-discount">&euro; Many gold bars!</h5>
+
+
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm1">Quantity</span>
+                                        </div>
+                                        <input type="number" class="form-control" aria-label="Small"
+                                               aria-describedby="inputGroup-sizing-sm" min="1" max="5">
+<!--                                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">-->
+                                    </div>
+
+
+                                    <button type="button" class="btn btn-info">Add to cart</button>
+
+                                </div>
+                            </div>
+                            <!-- box ends -->
+                            <!-- box starts -->
+
         </div>
     </div>
 
