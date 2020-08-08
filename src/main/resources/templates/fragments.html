@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 
@@ -21,10 +22,10 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/css/screen.css'>
 </div>
 
-    <header th:fragment="menu" class="row">
+<header th:fragment="menu" class="row">
     <div class="col-12">
-    <h1>Amazing shop</h1>
-    <p>From zero to hero</p>
+        <h1>Amazing shop</h1>
+        <p>From zero to hero</p>
     </div>
     <div class="col-12">
         <nav class="site-nav">
@@ -35,19 +36,12 @@
                 <li><a th:href="@{/aboutus}">About</a></li>
                 <li><a th:href="@{/contactus}">Contact Us</a></li>
                 <li><a th:href="@{/cart}">Cart</a></li>
-                <li><a th:href="@{/login}">Login</a></li>
-                <li><a th:href="@{/logout}">Logout</a></li>
                 <li><a th:href="@{/admin}">Admin</a></li>
                 <li><a th:href="@{/userDetails}">User</a></li>
-            </ul>
+                <span sec:authorize="!isAuthenticated()"><li><a th:href="@{/login}">Login</a></li></span>
+                <span sec:authorize="isAuthenticated()"><li><a th:href="@{/logout}">Logout, <span sec:authentication="name"></span></a></li></span>
 
-<!--            <h2>Welcome</h2>-->
-<!--            <p>Spring Security tutorial</p>-->
-<!--            <div sec:authorize="hasRole('USER')">Text visible to user.</div>-->
-<!--            <div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>-->
-<!--            <div sec:authorize="isAuthenticated()">-->
-<!--                Text visible only to authenticated users.-->
-<!--            </div>-->
+            </ul>
 
         </nav>
         <nav class="site-nav">
@@ -63,119 +57,119 @@
 
 </header>
 5
-    <div class="jumbotron white" th:fragment="sidebar">
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                Smartphones
+<div class="jumbotron white" th:fragment="sidebar">
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Smartphones
 
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/productFilter(brand=apple)}">Apple</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=xiaomi)}">Xiaomi</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=samsung)}">Samsung</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=huawei)}">Huawei</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=sony)}">Sony</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=microsoft)}">Microsoft</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=htc)}">HTC</a>
-            </div>
-        </div>
-        <br/>
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                Accessories
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/productFilter(brand=cables)}">Cables</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=headphones)}">Headphones</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=chargers)}">Chargers</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=maintenance)}">Maintenance</a>
-            </div>
-        </div>
-        <br/>
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                Tablets
-
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/productFilter(brand=appleTab)}">Apple</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=xiaomiTab)}">Xiaomi</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=samsungTab)}">Samsung</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=huaweiTab)}">Huawei</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=sonyTab)}">Sony</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=microsoftTab)}">Microsoft</a>
-                <a class="dropdown-item" th:href="@{/productFilter(brand=htcTab)}">HTC</a>
-            </div>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/productFilter(brand=apple)}">Apple</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=xiaomi)}">Xiaomi</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=samsung)}">Samsung</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=huawei)}">Huawei</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=sony)}">Sony</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=microsoft)}">Microsoft</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=htc)}">HTC</a>
         </div>
     </div>
+    <br/>
 
-<div class = "jumbotron white" th:fragment="sidebar-deals"></div>
-<div class = "jumbotron white" th:fragment="sidebar-faqs"></div>
-<div class = "jumbotron white" th:fragment="sidebar-aboutus"></div>
-<div class = "jumbotron white" th:fragment="sidebar-contactus"></div>
-<div class = "jumbotron white" th:fragment="sidebar-cart"></div>
-
-    <div class="jumbotron white" th:fragment="sidebar-admin">
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                Users
-
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/admin/registrations}">View/edit users</a>
-                <a class="dropdown-item" th:href="@{/admin/registration}">Add user</a>
-            </div>
-        </div>
-        <br/>
-
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                Products
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/admin/products}">View/edit products</a>
-                <a class="dropdown-item" th:href="@{/admin/product}">Add product</a>
-                <a class="dropdown-item" th:href="@{/admin/categories}">View/edit product's categories</a>
-                <a class="dropdown-item" th:href="@{/admin/category}">Add product's category</a>
-            </div>
-        </div>
-        <br/>
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                Purchase orders
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" th:href="@{/admin/orders}">View/confirm pending orders</a>
-            </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Accessories
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/productFilter(brand=cables)}">Cables</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=headphones)}">Headphones</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=chargers)}">Chargers</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=maintenance)}">Maintenance</a>
         </div>
     </div>
+    <br/>
 
-    <div th:fragment="scripts">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-                crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-                integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-                crossorigin="anonymous"></script>
-        <script src="/js/main.js"></script>
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Tablets
+
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/productFilter(brand=appleTab)}">Apple</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=xiaomiTab)}">Xiaomi</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=samsungTab)}">Samsung</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=huaweiTab)}">Huawei</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=sonyTab)}">Sony</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=microsoftTab)}">Microsoft</a>
+            <a class="dropdown-item" th:href="@{/productFilter(brand=htcTab)}">HTC</a>
+        </div>
+    </div>
 </div>
 
-    <footer th:fragment="copy">
-        <p>&copy; 2020 Vilnius JAVA 4</p>
-    </footer>
+<div class="jumbotron white" th:fragment="sidebar-deals"></div>
+<div class="jumbotron white" th:fragment="sidebar-faqs"></div>
+<div class="jumbotron white" th:fragment="sidebar-aboutus"></div>
+<div class="jumbotron white" th:fragment="sidebar-contactus"></div>
+<div class="jumbotron white" th:fragment="sidebar-cart"></div>
+
+<div class="jumbotron white" th:fragment="sidebar-admin">
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Users
+
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/admin/registrations}">View/edit users</a>
+            <a class="dropdown-item" th:href="@{/admin/registration}">Add user</a>
+        </div>
+    </div>
+    <br/>
+
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Products
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/admin/products}">View/edit products</a>
+            <a class="dropdown-item" th:href="@{/admin/product}">Add product</a>
+            <a class="dropdown-item" th:href="@{/admin/categories}">View/edit product's categories</a>
+            <a class="dropdown-item" th:href="@{/admin/category}">Add product's category</a>
+        </div>
+    </div>
+    <br/>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Purchase orders
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/admin/orders}">View/confirm pending orders</a>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="scripts">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+</div>
+
+<footer th:fragment="copy">
+    <p>&copy; 2020 Vilnius JAVA 4</p>
+</footer>
 
 </body>
 </html>
