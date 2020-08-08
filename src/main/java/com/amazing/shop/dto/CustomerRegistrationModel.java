@@ -3,6 +3,8 @@ package com.amazing.shop.dto;
 import lombok.Data;
 import com.amazing.shop.constraint.FieldMatch;
 
+import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
@@ -33,6 +35,7 @@ public class CustomerRegistrationModel implements Serializable {
     @NotBlank(message = "error.field.not.blank")
     private String email;
 
+    @AssertFalse
     private Boolean isAdmin;
 
     private Boolean enabled;

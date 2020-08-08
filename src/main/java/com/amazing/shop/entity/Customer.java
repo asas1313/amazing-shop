@@ -43,5 +43,4 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer")
     List<CartLine> cartLines;
-
 }
