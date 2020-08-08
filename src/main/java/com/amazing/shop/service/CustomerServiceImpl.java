@@ -51,7 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setLogin(registrationModel.getLogin());
         customer.setEmail(registrationModel.getEmail());
         customer.setPassword(passwordEncoder.encode(registrationModel.getPassword()));
-        if(registrationModel.getIsAdmin())
+        if(registrationModel.getIsAdmin()!=null && registrationModel.getIsAdmin())
             customer.setRole("ROLE_ADMIN");
         else
             customer.setRole("ROLE_USER");
