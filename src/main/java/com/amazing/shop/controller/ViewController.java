@@ -3,6 +3,7 @@ package com.amazing.shop.controller;
 import com.amazing.shop.dto.CustomerRegistrationModel;
 import com.amazing.shop.entity.Category;
 import com.amazing.shop.entity.Product;
+import com.amazing.shop.entity.Role;
 import com.amazing.shop.repository.CategoryRepository;
 import com.amazing.shop.repository.ProductRepository;
 import com.amazing.shop.service.CustomerService;
@@ -97,10 +98,10 @@ public class ViewController {
             customerRegistrationModel.setConfirmPassword(customer.getPassword());
             customerRegistrationModel.setLogin(customer.getLogin());
             customerRegistrationModel.setEmail(customer.getEmail());
-            customerRegistrationModel.setIsAdmin(customer.getRole().equals("ROLE_ADMIN"));
+            customerRegistrationModel.setAdmin(customer.getRoles().contains(new Role("ROLE_ADMIN")));
             customerRegistrationModel.setCity(customer.getCity());
             customerRegistrationModel.setAddress(customer.getAddress());
-            customerRegistrationModel.setEnabled(customer.getEnabled());
+            customerRegistrationModel.setEnabled(customer.isEnabled());
         } else {
             new RuntimeException("Please, connect first.");
         }

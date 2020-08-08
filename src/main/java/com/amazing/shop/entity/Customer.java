@@ -30,16 +30,13 @@ public class Customer {
     @Column(nullable = false, columnDefinition = "VARCHAR(250)")
     private String password;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(20)")
-    private String role;
-
     @Column(columnDefinition = "VARCHAR(250)")
     private String city;
 
     @Column(columnDefinition = "VARCHAR(250)")
     private String address;
 
-    private Boolean enabled;
+    private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(

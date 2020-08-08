@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -24,10 +25,10 @@ public class ProductRegistrationModel implements Serializable {
     @NotBlank(message = "error.field.not.blank")
     private String thumbnail;
 
-    @NotBlank(message = "error.field.not.blank")
+    @NotNull(message = "error.field.not.null")
     private Double price;
 
-    @NotBlank(message = "error.field.not.blank")
+    @NotNull(message = "error.field.not.null")
     private Integer quantity;
 
     private Collection<String> products;

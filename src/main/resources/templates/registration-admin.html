@@ -24,7 +24,7 @@
                     </div>
 
                     <h2 th:text="#{registration.title}" style="color:#3291a8"></h2>
-                    <form th:action="@{/registration/admin}" th:object="${customer}" method="post">
+                    <form th:action="@{/admin/registration}" th:object="${customer}" method="post">
 
                         <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
                            th:each="error : ${#fields.errors('global')}"
@@ -75,14 +75,14 @@
 <!--                               th:text="#{__${error}__}">Validation error</p>-->
 <!--                        </div>-->
                         <div class="form-group"
-                             th:classappend="${#fields.hasErrors('isAdmin')}? 'has-error':''">
-                            <label for="isAdmin" class="control-label"
+                             th:classappend="${#fields.hasErrors('admin')}? 'has-error':''">
+                            <label for="admin" class="control-label"
                                    th:text="Administrator" style="color:#3291a8"></label>
                             <input type="checkbox"
-                                   id="isAdmin" name="isAdmin" class="form-control"
-                                   th:field="*{isAdmin}" />
+                                   id="admin" name="admin" class="form-control"
+                                   th:field="*{admin}" />
                             <p class="error-message"
-                               th:each="error : ${#fields.errors('isAdmin')}"
+                               th:each="error : ${#fields.errors('admin')}"
                                th:text="#{__${error}__}">Validation error</p>
                         </div>
                         <div class="form-group"

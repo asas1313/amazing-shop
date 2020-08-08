@@ -1,5 +1,6 @@
 package com.amazing.shop.controller;
 
+import com.amazing.shop.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +32,7 @@ public class RegistrationController {
         return "registration-admin";
     }
 
-    @PostMapping("/admin")
+    @PostMapping("")
     public String registerAdmin(@ModelAttribute("customer") @Valid CustomerRegistrationModel registrationModel,
                            BindingResult result) {
         Customer existing = customerService.findByLogin(registrationModel.getLogin()).orElse(null);
@@ -70,10 +71,10 @@ public class RegistrationController {
         customerRegistrationModel.setLogin(customer.getLogin());
         customerRegistrationModel.setEmail(customer.getEmail());
         customerRegistrationModel.setId(customer.getId());
-        customerRegistrationModel.setIsAdmin(customer.getRole().equals("ROLE_ADMIN"));
+        customerRegistrationModel.setAdmin(customer.getRoles().contains(new Role("ROLE_ADMIN")));
         customerRegistrationModel.setCity(customer.getCity());
         customerRegistrationModel.setAddress(customer.getAddress());
-        customerRegistrationModel.setEnabled(customer.getEnabled());
+        customerRegistrationModel.setEnabled(customer.isEnabled());
         model.addAttribute("customer", customerRegistrationModel);
         return "registration-admin";
     }

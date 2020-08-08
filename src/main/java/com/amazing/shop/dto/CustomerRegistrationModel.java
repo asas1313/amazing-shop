@@ -35,10 +35,9 @@ public class CustomerRegistrationModel implements Serializable {
     @NotBlank(message = "error.field.not.blank")
     private String email;
 
-    @AssertFalse
-    private Boolean isAdmin;
+    private boolean isAdmin;
 
-    private Boolean enabled;
+    private boolean enabled;
 
     private String city;
 

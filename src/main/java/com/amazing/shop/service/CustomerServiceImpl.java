@@ -55,8 +55,8 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setLogin(registrationModel.getLogin());
         customer.setEmail(registrationModel.getEmail());
         customer.setPassword(passwordEncoder.encode(registrationModel.getPassword()));
-        customer.setRoles(singletonList(new Role((registrationModel.getIsAdmin())?"ROLE_ADMIN":"ROLE_USER")));
-        customer.setEnabled(registrationModel.getEnabled());
+        customer.setRoles(singletonList(new Role((registrationModel.isAdmin())?"ROLE_ADMIN":"ROLE_USER")));
+        customer.setEnabled(registrationModel.isEnabled());
         customer.setCity(registrationModel.getCity());
         customer.setAddress(registrationModel.getAddress());
         customer.setCartLines(convertCartLineModelToEntity(registrationModel.getCartLines()));
