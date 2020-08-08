@@ -20,11 +20,28 @@
         <div class="col-3" th:insert="~{fragments :: sidebar}"></div>
         <div class="faqs" th:insert="~{fragments :: sidebar-contactus}"></div>
         <div class="col-9">
-            <br/>
-            <p>
-            <h3 style="color: #3291a8">Contact Us</h3>
-            </p>
+            <div align="center">
+            <h3 style="color: #3291a8">CONTACT US</h3>
+            </div>
+            <div class="container" style="border-radius: 5px; background-color: #d8edf3; padding:20px;">
+                <form action="action_page.php" >
+                    <label for="fname" style="color:black">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    <label for="lname" style="color:black">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <label for="country" style="color:black">Country</label>
+                    <select id="country" name="country">
+                        <option value="lietuva">Lietuva</option>
+                        <option value="canada">Canada</option>
+                        <option value="usa">USA</option>
+                    </select>
+                    <label for="subject" style="color:black">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </div>
+
     </div>
 
     <div th:insert="~{fragments :: copy}"></div>
